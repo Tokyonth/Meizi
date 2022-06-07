@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable-v24/bg_gray_round.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/bg_album_count.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/bg_bottom_sheet.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/bg_bottom_sheet_dialog.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/bg_clover_overlay.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/bg_keyboard.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_baseline_image.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_grid_view.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_image.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_keyboard_backspace.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_offline_bolt.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_settings.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_sharp_arrow_downward.xml" value="0.3295" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_sharp_arrow_upward.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_detail.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_main.xml" value="0.22780797101449277" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_password.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_search.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_chosen.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_discovery.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_home.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_hottest.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_latest.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_mine.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_reco.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_search.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_search_album.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_chosen_album.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_detail.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_detail_picture.xml" value="0.17806484295845998" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_grid_album.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_hottest_album.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_latest.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_latest_album.xml" value="0.17806484295845998" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_reco_album.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_search_album.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_dialog_grid.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_psd_keyboard.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_scale_footer.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_scale_header.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_swipe_footer.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_swipe_header.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_toolbar.xml" value="0.22780797101449277" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36614583333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

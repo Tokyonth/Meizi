@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">图</string>
+    <string name="title_home">图片</string>
+    <string name="title_discovery">发现</string>
+    <string name="title_mine">我的</string>
+
+    <string name="refresh_header">下拉刷新</string>
+    <string name="refresh_footer">上拉加载</string>
+    <string name="loading">正在加载</string>
+    <string name="pending">松开刷新</string>
+</resources>

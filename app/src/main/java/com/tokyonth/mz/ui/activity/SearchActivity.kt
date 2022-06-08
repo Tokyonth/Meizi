@@ -49,26 +49,26 @@ class SearchActivity : BaseActivity(), SearchAction {
     }
 
     private fun loadSearchAlbum(type: SearchType, words: String, id: String? = null) {
-        val f = SearchAlbumFragment()
-        f.arguments = Bundle().apply {
+        val searchFragment = SearchAlbumFragment()
+        searchFragment.arguments = Bundle().apply {
             putString(Constants.INTENT_KEY_SEARCH_TYPE, type.name)
             putString(Constants.INTENT_KEY_SEARCH_WORDS, words)
             putString(Constants.INTENT_KEY_ALBUM_ID, id)
         }
         supportFragmentManager.beginTransaction()
-            .replace(binding.fragContainer.id, f)
+            .replace(binding.fragContainer.id, searchFragment)
             .commit()
     }
 
     override fun onDone(words: String) {
         if (words.isNotEmpty()) {
-            val fragment = SearchAlbumFragment()
-            fragment.arguments = Bundle().apply {
+            val searchFragment = SearchAlbumFragment()
+            searchFragment.arguments = Bundle().apply {
                 putString(Constants.INTENT_KEY_SEARCH_TYPE, SearchType.TEXT.name)
                 putString(Constants.INTENT_KEY_SEARCH_WORDS, words)
             }
             supportFragmentManager.beginTransaction()
-                .replace(binding.fragContainer.id, fragment)
+                .replace(binding.fragContainer.id, searchFragment)
                 .addToBackStack(null)
                 .commit()
         }

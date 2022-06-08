@@ -1,6 +1,7 @@
 package com.tokyonth.mz.ui.activity
 
 import androidx.activity.viewModels
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.tokyonth.bt.utils.ktx.lazyBind
@@ -18,14 +19,23 @@ class TagPictureActivity : BaseActivity() {
 
     private val tagAdapter = TagPictureAdapter()
 
+    private var title: String = ""
+
     override fun setVbRoot() = binding
 
     override fun initData() {
-        val index = intent.getIntExtra(Constants.INTENT_KEY_TAG_PICTURE, -1)
-        model.setTagPictureType(index)
+        val type = intent.getIntExtra(Constants.INTENT_KEY_TAG_PICTURE, -1)
+        title = when (type) {
+            0 -> "分类"
+            1 -> "模特"
+            2 -> "机构"
+            else -> ""
+        }
+        model.setTagPictureType(type)
     }
 
     override fun initView() {
+        setToolBar(binding.inToolbar.toolbar, "标签: $title")
         binding.refreshTagPicture.run {
             autoRefresh()
             setOnRefreshListener {

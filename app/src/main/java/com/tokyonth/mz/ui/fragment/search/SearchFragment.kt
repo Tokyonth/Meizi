@@ -50,23 +50,29 @@ class SearchFragment : BaseFragment() {
     override fun initObserve() {
         super.initObserve()
         model.hotTagViewModel.observe(viewLifecycleOwner) {
-            val params = FlowLayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-            params.setMargins(
-                4.dp2px().toInt(), 0, 4.dp2px().toInt(), 0
-            )
-            it.forEach { str ->
-                val tag = Chip(requireContext()).apply {
-                    text = str
-                    layoutParams = params
-                    setOnClickListener {
-                        searchAction?.onDone(str)
-                    }
-                }
-                binding.flowTag.addView(tag)
+            if (it.isNotEmpty()) {
+                createTag(it)
             }
+        }
+    }
+
+    private fun createTag(list: List<String>) {
+        val params = FlowLayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        params.setMargins(
+            4.dp2px().toInt(), 0, 4.dp2px().toInt(), 0
+        )
+        list.forEach { str ->
+            val tag = Chip(requireContext()).apply {
+                text = str
+                layoutParams = params
+                setOnClickListener {
+                    searchAction?.onDone(str)
+                }
+            }
+            binding.flowTag.addView(tag)
         }
     }
 

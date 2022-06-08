@@ -23,7 +23,7 @@ class ChosenFragment : BaseFragment() {
     override fun setVbRoot() = binding
 
     override fun initData() {
-        model.getAlbumData()
+        //model.getAlbumData()
     }
 
     override fun initView() {

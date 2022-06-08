@@ -16,7 +16,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp">
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <View
+                android:id="@+id/center_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#F5F5F5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_password"
@@ -25,6 +34,7 @@
                 android:text="密码访问"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/center_line"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -33,18 +43,16 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@id/tv_password"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_password"
-                app:thumbTint="@color/purple_500"
-                app:trackTint="@color/purple_200" />
+                app:layout_constraintTop_toTopOf="@id/tv_password" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="清除缓存"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/tv_password" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/center_line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

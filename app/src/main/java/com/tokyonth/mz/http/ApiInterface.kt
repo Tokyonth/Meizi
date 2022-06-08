@@ -51,13 +51,25 @@ interface ApiInterface {
         @FieldMap map: Map<String, String>
     ): BaseResponse<List<AlbumPictureEntity>>
 
+    @FormUrlEncoded
     @POST("/api/lists/tags")
-    suspend fun getCategoryTag(): BaseResponse<List<AlbumTagEntity>>
+    suspend fun getCategoryTag(
+        @FieldMap map: Map<String, String>
+    ): BaseResponse<List<AlbumTagEntity>>
 
+    @FormUrlEncoded
     @POST("/api/lists/jigou")
-    suspend fun getTeamTag(): BaseResponse<List<AlbumTagEntity>>
+    suspend fun getTeamTag(
+        @FieldMap map: Map<String, String>
+    ): BaseResponse<List<AlbumTagEntity>>
 
+    @FormUrlEncoded
     @POST("/api/lists/motel")
-    suspend fun getMotelTag(): BaseResponse<List<AlbumTagEntity>>
+    suspend fun getMotelTag(
+        @FieldMap map: Map<String, String>
+    ): BaseResponse<List<AlbumTagEntity>>
+
+    @POST("/api/lists/resou")
+    suspend fun getHotTag(): BaseResponse<List<String>>
 
 }

@@ -5,15 +5,18 @@ import android.graphics.Color
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.setPadding
 import com.github.panpf.sketch.displayImage
 import com.github.panpf.sketch.transform.CircleCropTransformation
 
 import com.tokyonth.mz.R
 import com.tokyonth.mz.data.AlbumTagEntity
+import com.tokyonth.mz.utils.RandomUtils
 import com.tokyonth.mz.utils.ktx.dp2px
 
 class DiscoveryClassView : LinearLayout {
@@ -45,9 +48,18 @@ class DiscoveryClassView : LinearLayout {
         orientation = VERTICAL
         setPadding(16.dp2px().toInt())
         val tvTitle = TextView(context).apply {
+            layoutParams = LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             setTextColor(Color.BLACK)
             textSize = 16f
             text = title
+        }
+        val drawable = AppCompatResources.getDrawable(context, R.drawable.ic_round_chevron_right)
+        tvTitle.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null)
+        tvTitle.setOnClickListener {
+            moreClick?.invoke()
         }
         addView(tvTitle)
         ivLl = LinearLayout(context).apply {
@@ -68,8 +80,8 @@ class DiscoveryClassView : LinearLayout {
         }
         val tv = TextView(context).apply {
             textSize = 14f
-            gravity = Gravity.CENTER
             maxLines = 1
+            gravity = Gravity.CENTER
             ellipsize = TextUtils.TruncateAt.END
             text = data.name
         }
@@ -82,10 +94,17 @@ class DiscoveryClassView : LinearLayout {
     }
 
     fun setData(list: List<AlbumTagEntity>) {
-        for (index in 0 until 4) {
-            val data = list[index]
+        val indexGroup = RandomUtils.start(4, list.size - 1)
+        indexGroup.forEach {
+            val data = list[it]
             ivLl?.addView(buildView(data))
         }
+    }
+
+    private var moreClick: (() -> Unit)? = null
+
+    fun setOnMoreClick(moreClick: () -> Unit) {
+        this.moreClick = moreClick
     }
 
 }

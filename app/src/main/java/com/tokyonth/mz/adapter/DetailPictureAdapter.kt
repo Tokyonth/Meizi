@@ -21,8 +21,8 @@ class DetailPictureAdapter : BaseAdapter<String, ItemDetailPictureBinding>() {
     }
 
     override fun convert(data: String, holder: BaseViewHolder<ItemDetailPictureBinding>) {
-        //holder.getItemBinding().ivDetailPicture.displayImage(data)
-        holder.itemView.setOnClickListener {
+        holder.getItemBinding().ivDetailPicture.displayImage(data)
+        holder.getItemBinding().ivDetailPicture.setOnClickListener {
             itemClick?.invoke(holder.bindingAdapterPosition)
         }
     }

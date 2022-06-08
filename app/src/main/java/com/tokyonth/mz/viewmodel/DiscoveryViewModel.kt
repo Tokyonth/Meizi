@@ -2,6 +2,7 @@ package com.tokyonth.mz.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tokyonth.mz.Constants
 import com.tokyonth.mz.data.AlbumTagEntity
 import com.tokyonth.mz.http.ApiRepository
 import com.tokyonth.mz.http.requestResult
@@ -16,7 +17,7 @@ class DiscoveryViewModel : ViewModel() {
 
     fun getCategoryTag() {
         requestResult({
-            ApiRepository.api.getCategoryTag()
+            ApiRepository.api.getCategoryTag(buildMap())
         }, {
             categoryTagViewModel.value = it.data
         }, {
@@ -26,7 +27,7 @@ class DiscoveryViewModel : ViewModel() {
 
     fun getTeamTag() {
         requestResult({
-            ApiRepository.api.getTeamTag()
+            ApiRepository.api.getTeamTag(buildMap())
         }, {
             teamTagViewModel.value = it.data
         }, {
@@ -36,12 +37,19 @@ class DiscoveryViewModel : ViewModel() {
 
     fun getMotelTag() {
         requestResult({
-            ApiRepository.api.getMotelTag()
+            ApiRepository.api.getMotelTag(buildMap())
         }, {
             motelTagViewModel.value = it.data
         }, {
 
         })
+    }
+
+    private fun buildMap(): HashMap<String, String> {
+        return HashMap<String, String>().apply {
+            put(Constants.API_PAGE_MAP_KEY, "1")
+            put(Constants.API_PAGE_SIZE_MAP_KEY, "30")
+        }
     }
 
 }

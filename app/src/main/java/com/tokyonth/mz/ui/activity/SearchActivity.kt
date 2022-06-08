@@ -62,13 +62,13 @@ class SearchActivity : BaseActivity(), SearchAction {
 
     override fun onDone(words: String) {
         if (words.isNotEmpty()) {
-            val f = SearchAlbumFragment()
-            f.arguments = Bundle().apply {
+            val fragment = SearchAlbumFragment()
+            fragment.arguments = Bundle().apply {
                 putString(Constants.INTENT_KEY_SEARCH_TYPE, SearchType.TEXT.name)
                 putString(Constants.INTENT_KEY_SEARCH_WORDS, words)
             }
             supportFragmentManager.beginTransaction()
-                .replace(binding.fragContainer.id, f)
+                .replace(binding.fragContainer.id, fragment)
                 .addToBackStack(null)
                 .commit()
         }

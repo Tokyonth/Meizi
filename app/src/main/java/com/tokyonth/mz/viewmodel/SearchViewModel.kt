@@ -11,7 +11,7 @@ class SearchViewModel : AlbumPictureViewModel() {
 
     fun getSearchAlbumData(searchType: SearchType) {
         this.searchType = searchType
-        getAlbumData()
+        //getAlbumData()
     }
 
     override suspend fun setAlbumApi(map: HashMap<String, String>): BaseResponse<List<AlbumPictureEntity>> {

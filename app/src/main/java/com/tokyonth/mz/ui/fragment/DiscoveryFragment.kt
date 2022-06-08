@@ -8,6 +8,7 @@ import com.tokyonth.mz.Constants
 import com.tokyonth.mz.base.BaseFragment
 import com.tokyonth.mz.databinding.FragmentDiscoveryBinding
 import com.tokyonth.mz.ui.activity.SearchActivity
+import com.tokyonth.mz.ui.activity.TagPictureActivity
 import com.tokyonth.mz.ui.fragment.search.SearchType
 import com.tokyonth.mz.viewmodel.DiscoveryViewModel
 
@@ -31,6 +32,17 @@ class DiscoveryFragment : BaseFragment() {
                 putExtra(Constants.INTENT_KEY_SEARCH_TYPE, SearchType.TEXT.name)
             }.let {
                 startActivity(it)
+            }
+        }
+        arrayOf(
+            binding.disCategory,
+            binding.disMotel,
+            binding.disTeam
+        ).forEachIndexed { index, view ->
+            view.setOnMoreClick {
+                val intent = Intent(requireContext(), TagPictureActivity::class.java)
+                intent.putExtra(Constants.INTENT_KEY_TAG_PICTURE, index)
+                startActivity(intent)
             }
         }
     }

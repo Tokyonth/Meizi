@@ -32,6 +32,9 @@
             android:name=".ui.activity.DetailActivity"
             android:theme="@style/Theme.Mz.NoActionBar" />
         <activity
+            android:name=".ui.activity.TagPictureActivity"
+            android:theme="@style/Theme.Mz.NoActionBar" />
+        <activity
             android:name=".ui.activity.SearchActivity"
             android:theme="@style/Theme.Mz.NoActionBar"
             android:windowSoftInputMode="adjustResize" />

@@ -9,6 +9,7 @@ import com.tokyonth.mz.base.BaseFragment
 import com.tokyonth.mz.databinding.FragmentMineBinding
 import com.tokyonth.mz.ui.activity.PasswordActivity
 import com.tokyonth.mz.utils.SPUtils.getSP
+import com.tokyonth.mz.utils.ktx.snack
 
 class MineFragment : BaseFragment() {
 
@@ -32,6 +33,9 @@ class MineFragment : BaseFragment() {
                 putExtra(Constants.INTENT_PASSWORD_MODE, mode)
             }
             startActivity(intent)
+        }
+        binding.tvClearCache.setOnClickListener {
+            snack("oh...")
         }
     }
 

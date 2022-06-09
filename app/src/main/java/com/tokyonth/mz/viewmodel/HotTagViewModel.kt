@@ -15,7 +15,6 @@ class HotTagViewModel : ViewModel() {
             ApiRepository.api.getHotTag()
         }, {
             hotTagViewModel.value = it.data!!
-            hotTagViewModel.value = emptyList()
         })
     }
 

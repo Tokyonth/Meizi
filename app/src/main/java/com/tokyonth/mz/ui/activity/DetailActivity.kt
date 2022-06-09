@@ -12,6 +12,7 @@ import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
 import com.tokyonth.mz.adapter.DetailPictureAdapter
 import com.tokyonth.mz.base.BaseActivity
+import com.tokyonth.mz.data.AccurateEntity
 import com.tokyonth.mz.data.DetailAlbumEntity
 import com.tokyonth.mz.databinding.ActivityDetailBinding
 import com.tokyonth.mz.ui.fragment.search.SearchType
@@ -90,10 +91,17 @@ class DetailActivity : BaseActivity() {
     private fun initClick(detailAlbumEntity: DetailAlbumEntity) {
         arrayOf(binding.ivMotelClover, binding.tvMotelName).forEach { v ->
             v.setOnClickListener {
-                Intent(this, SearchActivity::class.java).apply {
+                Intent(this, AccurateSearchActivity::class.java).apply {
                     putExtra(Constants.INTENT_KEY_SEARCH_TYPE, SearchType.MOTEL.name)
-                    putExtra(Constants.INTENT_KEY_SEARCH_WORDS, detailAlbumEntity.motelName)
                     putExtra(Constants.INTENT_KEY_ALBUM_ID, detailAlbumEntity.motelId)
+                    putExtra(
+                        Constants.INTENT_KEY_ACCURATE,
+                        AccurateEntity(
+                            detailAlbumEntity.motelName,
+                            detailAlbumEntity.text,
+                            detailAlbumEntity.motelPic
+                        )
+                    )
                 }.let {
                     startActivity(it)
                 }
@@ -101,10 +109,17 @@ class DetailActivity : BaseActivity() {
         }
         arrayOf(binding.ivTeamClover, binding.tvTeamName).forEach { v ->
             v.setOnClickListener {
-                Intent(this, SearchActivity::class.java).apply {
+                Intent(this, AccurateSearchActivity::class.java).apply {
                     putExtra(Constants.INTENT_KEY_SEARCH_TYPE, SearchType.TEAM.name)
-                    putExtra(Constants.INTENT_KEY_SEARCH_WORDS, detailAlbumEntity.jigouName)
                     putExtra(Constants.INTENT_KEY_ALBUM_ID, detailAlbumEntity.jigouId)
+                    putExtra(
+                        Constants.INTENT_KEY_ACCURATE,
+                        AccurateEntity(
+                            detailAlbumEntity.jigouName,
+                            detailAlbumEntity.text,
+                            detailAlbumEntity.jigouPic
+                        )
+                    )
                 }.let {
                     startActivity(it)
                 }

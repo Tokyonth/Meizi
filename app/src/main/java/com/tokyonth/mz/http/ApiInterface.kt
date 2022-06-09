@@ -52,6 +52,12 @@ interface ApiInterface {
     ): BaseResponse<List<AlbumPictureEntity>>
 
     @FormUrlEncoded
+    @POST("/api/lists/tags_type")
+    suspend fun getTagAlbum(
+        @FieldMap map: Map<String, String>
+    ): BaseResponse<List<AlbumPictureEntity>>
+
+    @FormUrlEncoded
     @POST("/api/lists/tags")
     suspend fun getCategoryTag(
         @FieldMap map: Map<String, String>

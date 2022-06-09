@@ -35,6 +35,9 @@
             android:name=".ui.activity.TagPictureActivity"
             android:theme="@style/Theme.Mz.NoActionBar" />
         <activity
+            android:name=".ui.activity.AccurateSearchActivity"
+            android:theme="@style/Theme.Mz.NoActionBar" />
+        <activity
             android:name=".ui.activity.SearchActivity"
             android:theme="@style/Theme.Mz.NoActionBar"
             android:windowSoftInputMode="adjustResize" />

@@ -46,6 +46,7 @@
                 app:layout_constraintTop_toTopOf="@id/tv_password" />
 
             <TextView
+                android:id="@+id/tv_clear_cache"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="清除缓存"

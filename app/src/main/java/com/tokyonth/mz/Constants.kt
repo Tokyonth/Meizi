@@ -12,6 +12,7 @@ object Constants {
     const val INTENT_KEY_SEARCH_WORDS = "searchWords"
     const val INTENT_KEY_VERIFIED = "passwordVerified"
     const val INTENT_KEY_TAG_PICTURE = "tagPicture"
+    const val INTENT_KEY_ACCURATE = "accurate"
 
     const val API_DEFAULT_PAGE_SIZE = "30"
     const val API_ALBUM_ID_MAP_KEY = "id"

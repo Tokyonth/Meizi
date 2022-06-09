@@ -45,6 +45,9 @@ class TagPictureAdapter : BaseAdapter<AlbumTagEntity, ItemTagPictureBinding>() {
             transformations(CircleCropTransformation())
         }
         holder.getItemBinding().tvTagPicture.text = data.name
+        holder.itemView.setOnClickListener {
+            itemClick?.invoke(data)
+        }
     }
 
 }

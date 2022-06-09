@@ -20,6 +20,8 @@
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_settings.xml" value="0.2055" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_sharp_arrow_downward.xml" value="0.3295" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_sharp_arrow_upward.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_acc.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_accurate_search.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_detail.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_main.xml" value="0.22780797101449277" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/activity_password.xml" value="0.30344202898550726" />
@@ -34,6 +36,7 @@
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_reco.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_search.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/fragment_search_album.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_accurate_search.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_chosen_album.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_detail.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/item_detail_picture.xml" value="0.17806484295845998" />

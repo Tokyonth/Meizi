@@ -25,7 +25,9 @@ class SearchFragment : BaseFragment() {
     override fun setVbRoot() = binding
 
     override fun initData() {
-        model.getHotTag()
+        if (model.hotTagViewModel.value.isNullOrEmpty()) {
+            model.getHotTag()
+        }
     }
 
     override fun initView() {
@@ -57,6 +59,7 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun createTag(list: List<String>) {
+        binding.flowTag.removeAllViews()
         val params = FlowLayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT

@@ -21,34 +21,18 @@ class SearchAlbumFragment : BaseFragment() {
 
     private val searchAdapter = SearchAlbumAdapter()
 
-    private var searchType: SearchType? = null
-
     private var words: String = ""
 
     override fun setVbRoot() = binding
 
     override fun initData() {
         words = requireArguments().getString(Constants.INTENT_KEY_SEARCH_WORDS, "")
-        val searchTypeStr = requireArguments().getString(Constants.INTENT_KEY_SEARCH_TYPE)
-        val searchId = requireArguments().getString(Constants.INTENT_KEY_ALBUM_ID)
-        searchType = SearchType.valueOf(searchTypeStr!!)
-        when (searchType) {
-            SearchType.TEXT -> {
-                model.addParameterData(Pair(Constants.API_SEARCH_MAP_KEY, words))
-            }
-            SearchType.TEAM,
-            SearchType.MOTEL -> {
-                model.addParameterData(Pair(Constants.API_ALBUM_ID_MAP_KEY, searchId!!))
-            }
-            else -> {}
-        }
-
-        model.getSearchAlbumData(searchType!!)
+        model.addParameterData(Pair(Constants.API_SEARCH_MAP_KEY, words))
     }
 
     @SuppressLint("SetTextI18n")
     override fun initView() {
-        binding.tvSearchAlbumTitle.text = "搜索: $words(${searchType?.getValue()})"
+        binding.tvSearchAlbumTitle.text = "搜索: $words"
         binding.refreshSearch.run {
             autoRefresh()
             setOnRefreshListener {

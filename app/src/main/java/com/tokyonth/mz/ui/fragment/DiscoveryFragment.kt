@@ -28,11 +28,8 @@ class DiscoveryFragment : BaseFragment() {
 
     override fun initView() {
         binding.tvSearch.setOnClickListener {
-            Intent(requireContext(), SearchActivity::class.java).apply {
-                putExtra(Constants.INTENT_KEY_SEARCH_TYPE, SearchType.TEXT.name)
-            }.let {
-                startActivity(it)
-            }
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
         }
         arrayOf(
             binding.disCategory,
@@ -50,13 +47,13 @@ class DiscoveryFragment : BaseFragment() {
     override fun initObserve() {
         super.initObserve()
         model.categoryTagViewModel.observe(viewLifecycleOwner) {
-            binding.disCategory.setData(it)
+            binding.disCategory.setData(SearchType.CATEGORY, it)
         }
         model.teamTagViewModel.observe(viewLifecycleOwner) {
-            binding.disTeam.setData(it)
+            binding.disTeam.setData(SearchType.TEAM, it)
         }
         model.motelTagViewModel.observe(viewLifecycleOwner) {
-            binding.disMotel.setData(it)
+            binding.disMotel.setData(SearchType.MOTEL, it)
         }
     }
 

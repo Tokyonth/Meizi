@@ -6,16 +6,32 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_search_album_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_marginTop="40dp"
         android:gravity="center|start"
-        android:paddingStart="16dp"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        tools:ignore="RtlSymmetry" />
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/ic_baseline_arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_search_album_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"

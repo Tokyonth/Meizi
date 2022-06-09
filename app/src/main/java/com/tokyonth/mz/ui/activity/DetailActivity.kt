@@ -43,6 +43,9 @@ class DetailActivity : BaseActivity() {
     }
 
     override fun initView() {
+        binding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
         binding.ivAlbumGrid.setOnClickListener {
             AlbumGirdDialog(this)
                 .setData(detailAdapter.getData()) {

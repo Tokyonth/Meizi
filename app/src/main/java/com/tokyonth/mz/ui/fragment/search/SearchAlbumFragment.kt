@@ -53,6 +53,9 @@ class SearchAlbumFragment : BaseFragment() {
                 startActivity(it)
             }
         }
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 
     override fun initObserve() {

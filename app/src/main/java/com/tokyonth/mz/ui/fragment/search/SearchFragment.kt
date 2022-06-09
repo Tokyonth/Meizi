@@ -40,6 +40,9 @@ class SearchFragment : BaseFragment() {
             }
             false
         }
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 
     override fun onAttach(context: Context) {

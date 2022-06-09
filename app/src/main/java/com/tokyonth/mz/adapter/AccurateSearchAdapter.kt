@@ -23,7 +23,7 @@ class AccurateSearchAdapter : AlbumPictureAdapter<ItemAccurateSearchBinding>() {
         super.convert(data, holder)
         holder.getItemBinding().tvAccurateSearchAlbumName.text = data.name
         holder.getItemBinding().tvAccurateSearchAlbumCount.text = "${data.nums}P"
-       // holder.getItemBinding().ivAccurateSearch.displayImage(data.pic)
+        holder.getItemBinding().ivAccurateSearch.displayImage(data.pic)
     }
 
 }

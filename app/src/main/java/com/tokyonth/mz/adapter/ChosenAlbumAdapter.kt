@@ -24,7 +24,7 @@ class ChosenAlbumAdapter : AlbumPictureAdapter<ItemChosenAlbumBinding>() {
         super.convert(data, holder)
         holder.getItemBinding().tvChosenAlbumName.text = data.name
         holder.getItemBinding().tvChosenAlbumCount.text = "${data.nums}P"
-        // holder.getItemBinding().ivChosenAlbum.displayImage(data.pic)
+        holder.getItemBinding().ivChosenAlbum.displayImage(data.pic)
     }
 
 }

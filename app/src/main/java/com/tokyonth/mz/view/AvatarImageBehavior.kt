@@ -100,7 +100,7 @@ class AvatarImageBehavior(private val mContext: Context, attrs: AttributeSet?) :
         if (mStartHeight == 0) mStartHeight = child.height
         if (mStartXPosition == 0) mStartXPosition = (child.x + child.width / 2).toInt()
         if (mFinalXPosition == 0) mFinalXPosition =
-            mContext.resources.getDimensionPixelOffset(R.dimen.spacing_normal) + mCustomFinalHeight.toInt() / 2
+            120 + mCustomFinalHeight.toInt() / 2
         if (mStartToolbarPosition == 0f) mStartToolbarPosition = dependency.y
         if (mChangeBehaviorPoint == 0f) {
             mChangeBehaviorPoint =

@@ -7,7 +7,6 @@ import com.tokyonth.mz.Constants
 import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.http.BaseResponse
 import com.tokyonth.mz.http.requestResult
-import com.tokyonth.mz.utils.ktx.toast
 
 abstract class AlbumPictureViewModel : ViewModel() {
 
@@ -16,6 +15,8 @@ abstract class AlbumPictureViewModel : ViewModel() {
     val loadMoreLiveData = MutableLiveData<Boolean>()
 
     val refreshLiveData = MutableLiveData<Boolean>()
+
+    val errorLiveData = MutableLiveData<String>()
 
     private var formData = HashMap<String, String>()
 
@@ -34,9 +35,9 @@ abstract class AlbumPictureViewModel : ViewModel() {
         }
     }
 
-    private fun getAlbumData(page: Int = pageIndex) {
+    private fun getAlbumData() {
         requestResult({
-            formData[Constants.API_PAGE_MAP_KEY] = page.toString()
+            formData[Constants.API_PAGE_MAP_KEY] = pageIndex.toString()
             setAlbumApi(formData)
         }, {
             if (isLoadMore) {
@@ -60,20 +61,21 @@ abstract class AlbumPictureViewModel : ViewModel() {
                 refreshLiveData.value = false
                 isRefresh = false
             }
-            toast(it.errorMsg)
+            errorLiveData.value = it.errorMsg
+            //toast(it.errorMsg)
         })
     }
 
     fun nextPage() {
         pageIndex += 1
         isLoadMore = true
-        getAlbumData(pageIndex)
+        getAlbumData()
     }
 
     fun refreshPage() {
         pageIndex = 1
         isRefresh = true
-        getAlbumData(pageIndex)
+        getAlbumData()
     }
 
 }

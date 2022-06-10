@@ -8,7 +8,6 @@ import com.tokyonth.mz.data.AlbumTagEntity
 import com.tokyonth.mz.http.ApiRepository
 import com.tokyonth.mz.http.BaseResponse
 import com.tokyonth.mz.http.requestResult
-import com.tokyonth.mz.utils.ktx.toast
 
 class TagPictureViewModel : ViewModel() {
 
@@ -17,6 +16,8 @@ class TagPictureViewModel : ViewModel() {
     val loadMoreLiveData = MutableLiveData<Boolean>()
 
     val refreshLiveData = MutableLiveData<Boolean>()
+
+    val errorLiveData = MutableLiveData<String>()
 
     private var formData = HashMap<String, String>()
 
@@ -78,7 +79,8 @@ class TagPictureViewModel : ViewModel() {
                 refreshLiveData.value = false
                 isRefresh = false
             }
-            toast(it.errorMsg)
+            errorLiveData.value = it.errorMsg
+            //toast(it.errorMsg)
         })
     }
 

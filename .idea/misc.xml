@@ -14,6 +14,7 @@
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_baseline_image.xml" value="0.2055" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_image_outline.xml" value="0.2055" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_chevron_right.xml" value="0.2055" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_error_outline.xml" value="0.2055" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_grid_view.xml" value="0.2055" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_image.xml" value="0.2055" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/drawable/ic_round_keyboard_backspace.xml" value="0.2055" />
@@ -52,6 +53,7 @@
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_accurate_content.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_dialog_grid.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_psd_keyboard.xml" value="0.30344202898550726" />
+        <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_rv_placeholder.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_scale_footer.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_scale_header.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidProjects/Meizi/app/src/main/res/layout/layout_swipe_footer.xml" value="0.30344202898550726" />

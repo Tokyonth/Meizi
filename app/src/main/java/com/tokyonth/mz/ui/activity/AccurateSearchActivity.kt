@@ -44,11 +44,13 @@ class AccurateSearchActivity : BaseActivity() {
 
     override fun initView() {
         setToolBar(binding.toolbar, "")
-        binding.ivClover.load(accurateEntity!!.pic, isBlur = true)
-        binding.ivAvatar.load(accurateEntity!!.pic, isCircle = true)
-        binding.tvToolbar.text = accurateEntity?.name
-        binding.tvTitle.text = accurateEntity?.name
-        binding.tvInfo.text = accurateEntity?.text
+        binding.run {
+            ivClover.load(accurateEntity!!.pic, isBlur = true)
+            ivAvatar.load(accurateEntity!!.pic, isCircle = true)
+            tvToolbar.text = accurateEntity?.name
+            tvTitle.text = accurateEntity?.name
+            tvInfo.text = accurateEntity?.text
+        }
         binding.included.refreshAccurateSearch.run {
             autoRefresh()
             setOnRefreshListener {
@@ -75,7 +77,6 @@ class AccurateSearchActivity : BaseActivity() {
                 val num = abs(i.toFloat()) / 100f
                 binding.llAccurateInfo.alpha = 1 - num
                 binding.tvToolbar.alpha = num
-
 /*                if (abs(verticalOffset) >= appBarLayout.totalScrollRange) {
 
                 } else if (verticalOffset == 0) {
@@ -97,6 +98,11 @@ class AccurateSearchActivity : BaseActivity() {
         }
         model.loadMoreLiveData.observe(this) {
             binding.included.refreshAccurateSearch.finishLoadMore(it)
+        }
+        model.errorLiveData.observe(this) {
+            if (accurateSearchAdapter.itemCount == 0) {
+                accurateSearchAdapter.setErrorView(this, it)
+            }
         }
     }
 

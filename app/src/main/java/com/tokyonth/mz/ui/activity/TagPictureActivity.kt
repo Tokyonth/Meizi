@@ -84,6 +84,11 @@ class TagPictureActivity : BaseActivity() {
         model.loadMoreLiveData.observe(this) {
             binding.refreshTagPicture.finishLoadMore(it)
         }
+        model.errorLiveData.observe(this) {
+            if (tagAdapter.itemCount == 0) {
+                tagAdapter.setErrorView(this, it)
+            }
+        }
     }
 
 }

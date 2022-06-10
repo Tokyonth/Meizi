@@ -23,7 +23,7 @@ class LatestFragment : BaseFragment() {
     override fun setVbRoot() = binding
 
     override fun initData() {
-        //model.getAlbumData()
+
     }
 
     override fun initView() {

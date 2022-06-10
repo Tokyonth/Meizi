@@ -4,11 +4,10 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-import com.github.panpf.sketch.displayImage
-
 import com.tokyonth.mz.base.BaseViewHolder
 import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.ItemChosenAlbumBinding
+import com.tokyonth.mz.utils.load
 
 class ChosenAlbumAdapter : AlbumPictureAdapter<ItemChosenAlbumBinding>() {
 
@@ -24,7 +23,7 @@ class ChosenAlbumAdapter : AlbumPictureAdapter<ItemChosenAlbumBinding>() {
         super.convert(data, holder)
         holder.getItemBinding().tvChosenAlbumName.text = data.name
         holder.getItemBinding().tvChosenAlbumCount.text = "${data.nums}P"
-        holder.getItemBinding().ivChosenAlbum.displayImage(data.pic)
+        holder.getItemBinding().ivChosenAlbum.load(data.pic)
     }
 
 }

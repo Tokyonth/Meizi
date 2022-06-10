@@ -1,6 +1,5 @@
 package com.tokyonth.mz.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -21,7 +20,6 @@ class DetailAlbumViewModel : ViewModel() {
         }, {
             detailAlbumLiveData.value = it
         }, {
-            Log.e("打印-->", it.errorMsg)
             toast(it.errorMsg)
         })
     }

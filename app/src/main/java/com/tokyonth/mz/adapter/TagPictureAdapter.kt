@@ -3,13 +3,12 @@ package com.tokyonth.mz.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.github.panpf.sketch.displayImage
-import com.github.panpf.sketch.transform.CircleCropTransformation
 
 import com.tokyonth.mz.base.BaseAdapter
 import com.tokyonth.mz.base.BaseViewHolder
 import com.tokyonth.mz.data.AlbumTagEntity
 import com.tokyonth.mz.databinding.ItemTagPictureBinding
+import com.tokyonth.mz.utils.load
 
 @SuppressLint("NotifyDataSetChanged")
 class TagPictureAdapter : BaseAdapter<AlbumTagEntity, ItemTagPictureBinding>() {
@@ -41,9 +40,7 @@ class TagPictureAdapter : BaseAdapter<AlbumTagEntity, ItemTagPictureBinding>() {
     }
 
     override fun convert(data: AlbumTagEntity, holder: BaseViewHolder<ItemTagPictureBinding>) {
-        holder.getItemBinding().ivTagPicture.displayImage(data.pic) {
-            transformations(CircleCropTransformation())
-        }
+        holder.getItemBinding().ivTagPicture.load(data.pic, true)
         holder.getItemBinding().tvTagPicture.text = data.name
         holder.itemView.setOnClickListener {
             itemClick?.invoke(data)

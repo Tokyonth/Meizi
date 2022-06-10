@@ -31,7 +31,7 @@
                 android:id="@+id/tv_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="密码访问"
+                android:text="@string/title_app_pwd"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@id/center_line"
@@ -49,7 +49,7 @@
                 android:id="@+id/tv_clear_cache"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="清除缓存"
+                android:text="@string/title_clear_cache"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Version 1.0"
+        android:text="@string/text_final_version"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

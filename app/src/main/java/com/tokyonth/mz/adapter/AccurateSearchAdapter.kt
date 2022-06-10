@@ -3,11 +3,11 @@ package com.tokyonth.mz.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.github.panpf.sketch.displayImage
 
 import com.tokyonth.mz.base.BaseViewHolder
 import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.ItemAccurateSearchBinding
+import com.tokyonth.mz.utils.load
 
 class AccurateSearchAdapter : AlbumPictureAdapter<ItemAccurateSearchBinding>() {
 
@@ -23,7 +23,7 @@ class AccurateSearchAdapter : AlbumPictureAdapter<ItemAccurateSearchBinding>() {
         super.convert(data, holder)
         holder.getItemBinding().tvAccurateSearchAlbumName.text = data.name
         holder.getItemBinding().tvAccurateSearchAlbumCount.text = "${data.nums}P"
-        holder.getItemBinding().ivAccurateSearch.displayImage(data.pic)
+        holder.getItemBinding().ivAccurateSearch.load(data.pic)
     }
 
 }

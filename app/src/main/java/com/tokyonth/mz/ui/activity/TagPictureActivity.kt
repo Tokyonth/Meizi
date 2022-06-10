@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
+import com.tokyonth.mz.R
 import com.tokyonth.mz.adapter.TagPictureAdapter
 import com.tokyonth.mz.base.BaseActivity
 import com.tokyonth.mz.data.AccurateEntity
 import com.tokyonth.mz.databinding.ActivityTagPictureBinding
 import com.tokyonth.mz.ui.fragment.search.SearchType
+import com.tokyonth.mz.utils.ktx.string
 import com.tokyonth.mz.viewmodel.TagPictureViewModel
 
 class TagPictureActivity : BaseActivity() {
@@ -31,10 +33,10 @@ class TagPictureActivity : BaseActivity() {
     override fun initData() {
         val type = intent.getIntExtra(Constants.INTENT_KEY_TAG_PICTURE, -1)
         val (title, searchType) = when (type) {
-            0 -> Pair("分类", SearchType.CATEGORY)
-            1 -> Pair("模特", SearchType.MOTEL)
-            2 -> Pair("机构", SearchType.TEAM)
-            else -> Pair("分类", SearchType.CATEGORY)
+            0 -> Pair(string(R.string.label_category), SearchType.CATEGORY)
+            1 -> Pair(string(R.string.label_motel), SearchType.MOTEL)
+            2 -> Pair(string(R.string.label_team), SearchType.TEAM)
+            else -> Pair(string(R.string.label_category), SearchType.CATEGORY)
         }
         this.title = title
         this.searchType = searchType
@@ -42,7 +44,7 @@ class TagPictureActivity : BaseActivity() {
     }
 
     override fun initView() {
-        setToolBar(binding.inToolbar.toolbar, "标签: $title")
+        setToolBar(binding.inToolbar.toolbar, title)
         binding.inToolbar.toolbar.navigationIcon?.setTint(Color.parseColor("#444444"))
         binding.refreshTagPicture.run {
             autoRefresh()

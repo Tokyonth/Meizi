@@ -1,12 +1,8 @@
 package com.tokyonth.mz.ui.activity
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.github.panpf.sketch.displayImage
-import com.github.panpf.sketch.transform.BlurTransformation
-import com.github.panpf.sketch.transform.CircleCropTransformation
 import com.google.android.material.appbar.AppBarLayout
 
 import com.tokyonth.bt.utils.ktx.lazyBind
@@ -16,6 +12,7 @@ import com.tokyonth.mz.base.BaseActivity
 import com.tokyonth.mz.data.AccurateEntity
 import com.tokyonth.mz.databinding.ActivityAccurateSearchBinding
 import com.tokyonth.mz.ui.fragment.search.SearchType
+import com.tokyonth.mz.utils.load
 import com.tokyonth.mz.viewmodel.AccurateSearchViewModel
 
 import kotlin.math.abs
@@ -47,12 +44,8 @@ class AccurateSearchActivity : BaseActivity() {
 
     override fun initView() {
         setToolBar(binding.toolbar, "")
-        binding.ivClover.displayImage(accurateEntity!!.pic) {
-            transformations(BlurTransformation(maskColor = Color.BLACK and 0x20FFFFFF))
-        }
-        binding.ivAvatar.displayImage(accurateEntity!!.pic) {
-            transformations(CircleCropTransformation())
-        }
+        binding.ivClover.load(accurateEntity!!.pic, isBlur = true)
+        binding.ivAvatar.load(accurateEntity!!.pic, isCircle = true)
         binding.tvToolbar.text = accurateEntity?.name
         binding.tvTitle.text = accurateEntity?.name
         binding.tvInfo.text = accurateEntity?.text

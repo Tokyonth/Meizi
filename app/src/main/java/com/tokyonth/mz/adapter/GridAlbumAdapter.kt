@@ -2,11 +2,11 @@ package com.tokyonth.mz.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.github.panpf.sketch.displayImage
 
 import com.tokyonth.mz.base.BaseAdapter
 import com.tokyonth.mz.base.BaseViewHolder
 import com.tokyonth.mz.databinding.ItemGridAlbumBinding
+import com.tokyonth.mz.utils.load
 
 class GridAlbumAdapter : BaseAdapter<String, ItemGridAlbumBinding>() {
 
@@ -21,7 +21,7 @@ class GridAlbumAdapter : BaseAdapter<String, ItemGridAlbumBinding>() {
     }
 
     override fun convert(data: String, holder: BaseViewHolder<ItemGridAlbumBinding>) {
-        holder.getItemBinding().ivAlbumGrid.displayImage(data)
+        holder.getItemBinding().ivAlbumGrid.load(data)
         holder.itemView.setOnClickListener {
             itemClick?.invoke(holder.bindingAdapterPosition)
         }

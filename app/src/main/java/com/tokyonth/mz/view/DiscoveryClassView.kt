@@ -12,10 +12,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.setPadding
-import com.github.panpf.sketch.displayImage
-import com.github.panpf.sketch.transform.CircleCropTransformation
-import com.tokyonth.mz.Constants
 
+import com.tokyonth.mz.Constants
 import com.tokyonth.mz.R
 import com.tokyonth.mz.data.AccurateEntity
 import com.tokyonth.mz.data.AlbumTagEntity
@@ -23,12 +21,9 @@ import com.tokyonth.mz.ui.activity.AccurateSearchActivity
 import com.tokyonth.mz.ui.fragment.search.SearchType
 import com.tokyonth.mz.utils.RandomUtils
 import com.tokyonth.mz.utils.ktx.dp2px
+import com.tokyonth.mz.utils.load
 
 class DiscoveryClassView : LinearLayout {
-
-    private var title: String = ""
-
-    private var ivLl: LinearLayout? = null
 
     constructor(context: Context) : this(context, null)
 
@@ -42,6 +37,10 @@ class DiscoveryClassView : LinearLayout {
         initAttr(attributeSet!!)
         initView()
     }
+
+    private var title: String = ""
+
+    private var ivLl: LinearLayout? = null
 
     private fun initAttr(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DiscoveryClassView)
@@ -79,9 +78,7 @@ class DiscoveryClassView : LinearLayout {
         val iv = ImageView(context).apply {
             layoutParams = LayoutParams(size, size)
             setPadding(8.dp2px().toInt())
-            displayImage(data.pic) {
-                transformations(CircleCropTransformation())
-            }
+            load(data.pic, isCircle = true)
             setOnClickListener {
                 Intent(context, AccurateSearchActivity::class.java).apply {
                     putExtra(Constants.INTENT_KEY_SEARCH_TYPE, searchType.name)

@@ -34,7 +34,7 @@ abstract class AlbumPictureViewModel : ViewModel() {
         }
     }
 
-    fun getAlbumData(page: Int = pageIndex) {
+    private fun getAlbumData(page: Int = pageIndex) {
         requestResult({
             formData[Constants.API_PAGE_MAP_KEY] = page.toString()
             setAlbumApi(formData)

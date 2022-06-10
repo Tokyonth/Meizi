@@ -1,12 +1,22 @@
 package com.tokyonth.mz.utils
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import com.github.panpf.sketch.displayImage
 
-fun ImageView.load(url: String) {
+import com.github.panpf.sketch.displayImage
+import com.github.panpf.sketch.transform.BlurTransformation
+import com.github.panpf.sketch.transform.CircleCropTransformation
+
+fun ImageView.load(url: String, isCircle: Boolean = false, isBlur: Boolean = false) {
     displayImage(url) {
-        placeholder(loadingDrawable()!!)
+        //placeholder(R.drawable.im_placeholder)
+        if (isCircle) {
+            transformations(CircleCropTransformation())
+        }
+        if (isBlur) {
+            transformations(BlurTransformation(maskColor = Color.BLACK and 0x20FFFFFF))
+        }
     }
 }
 

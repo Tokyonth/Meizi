@@ -32,7 +32,7 @@ fun <T : BaseResponse<*>> ViewModel.requestResult(
             val error = if (it is ApiException) {
                 it
             } else {
-                ApiException("未知错误 ${it.message}", it)
+                ApiException("未知错误: ${it.message}", it)
             }
             onError?.invoke(error)
             onFinished?.invoke()

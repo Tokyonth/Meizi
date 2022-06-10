@@ -28,7 +28,6 @@ class SafeGsonResponseBodyConverter<T>(gson: Gson, adapter: TypeAdapter<T>) :
             }
         }
 */
-
         val contentType = value.contentType()
         val charset = if (contentType != null) {
             contentType.charset(UTF_8)!!

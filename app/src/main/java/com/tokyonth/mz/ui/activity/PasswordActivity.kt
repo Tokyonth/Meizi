@@ -7,11 +7,13 @@ import androidx.core.view.WindowCompat
 import com.tokyonth.bt.utils.ktx.delay
 import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
+import com.tokyonth.mz.R
 import com.tokyonth.mz.base.BaseActivity
 import com.tokyonth.mz.databinding.ActivityPasswordBinding
 import com.tokyonth.mz.utils.SPUtils.getSP
 import com.tokyonth.mz.utils.SPUtils.putSP
 import com.tokyonth.mz.utils.ktx.snack
+import com.tokyonth.mz.utils.ktx.string
 import com.tokyonth.mz.view.PwdKeyboardView
 
 class PasswordActivity : BaseActivity() {
@@ -27,11 +29,11 @@ class PasswordActivity : BaseActivity() {
     }
 
     override fun initView() {
-        WindowCompat.getInsetsController(window, window.decorView)?.apply {
+        WindowCompat.getInsetsController(window, window.decorView).apply {
             window.navigationBarColor = Color.WHITE
         }
         if (passwordMode == 2) {
-            binding.tvPassword.text = "验证密码"
+            binding.tvPassword.setText(R.string.text_pwd_verified)
         }
         binding.etPassword.setOnTextInputListener {
             when (passwordMode) {
@@ -86,7 +88,7 @@ class PasswordActivity : BaseActivity() {
         delay(500) {
             binding.etPassword.setText("")
         }
-        snack("密码错误!")
+        snack(string(R.string.text_pwd_error))
     }
 
 }

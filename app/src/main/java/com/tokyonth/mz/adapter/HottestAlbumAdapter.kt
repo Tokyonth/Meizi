@@ -4,11 +4,10 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-import com.github.panpf.sketch.displayImage
-
 import com.tokyonth.mz.base.BaseViewHolder
 import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.ItemHottestAlbumBinding
+import com.tokyonth.mz.utils.load
 
 class HottestAlbumAdapter : AlbumPictureAdapter<ItemHottestAlbumBinding>() {
 
@@ -24,7 +23,7 @@ class HottestAlbumAdapter : AlbumPictureAdapter<ItemHottestAlbumBinding>() {
         super.convert(data, holder)
         holder.getItemBinding().tvHottestAlbumName.text = data.name
         holder.getItemBinding().tvChosenAlbumCount.text = "${data.nums}P"
-        holder.getItemBinding().ivHottestAlbum.displayImage(data.pic)
+        holder.getItemBinding().ivHottestAlbum.load(data.pic)
     }
 
 }

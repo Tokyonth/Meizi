@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
+import com.tokyonth.mz.R
 import com.tokyonth.mz.adapter.SearchAlbumAdapter
 import com.tokyonth.mz.base.BaseFragment
 import com.tokyonth.mz.databinding.FragmentSearchAlbumBinding
 import com.tokyonth.mz.ui.activity.DetailActivity
+import com.tokyonth.mz.utils.ktx.string
 import com.tokyonth.mz.viewmodel.SearchViewModel
 
 class SearchAlbumFragment : BaseFragment() {
@@ -32,7 +34,7 @@ class SearchAlbumFragment : BaseFragment() {
 
     @SuppressLint("SetTextI18n")
     override fun initView() {
-        binding.tvSearchAlbumTitle.text = "搜索: $words"
+        binding.tvSearchAlbumTitle.text = string(R.string.text_search) + ": $words"
         binding.refreshSearch.run {
             autoRefresh()
             setOnRefreshListener {

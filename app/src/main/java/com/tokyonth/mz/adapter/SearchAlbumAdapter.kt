@@ -3,11 +3,11 @@ package com.tokyonth.mz.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.github.panpf.sketch.displayImage
 
 import com.tokyonth.mz.base.BaseViewHolder
 import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.ItemSearchAlbumBinding
+import com.tokyonth.mz.utils.load
 
 class SearchAlbumAdapter : AlbumPictureAdapter<ItemSearchAlbumBinding>() {
 
@@ -23,7 +23,7 @@ class SearchAlbumAdapter : AlbumPictureAdapter<ItemSearchAlbumBinding>() {
         super.convert(data, holder)
         holder.getItemBinding().tvSearchAlbumName.text = data.name
         holder.getItemBinding().tvSearchAlbumCount.text = "${data.nums}P"
-        holder.getItemBinding().ivSearchAlbum.displayImage(data.pic)
+        holder.getItemBinding().ivSearchAlbum.load(data.pic)
     }
 
 }

@@ -16,17 +16,17 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="精选" />
+            android:text="@string/label_chosen" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="最新" />
+            android:text="@string/label_latest" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="最热" />
+            android:text="@string/label_hottest" />
 
     </com.google.android.material.tabs.TabLayout>
 

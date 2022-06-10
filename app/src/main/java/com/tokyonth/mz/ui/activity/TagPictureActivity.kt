@@ -14,6 +14,7 @@ import com.tokyonth.mz.data.AccurateEntity
 import com.tokyonth.mz.databinding.ActivityTagPictureBinding
 import com.tokyonth.mz.ui.fragment.search.SearchType
 import com.tokyonth.mz.utils.ktx.string
+import com.tokyonth.mz.utils.ktx.toast
 import com.tokyonth.mz.viewmodel.TagPictureViewModel
 
 class TagPictureActivity : BaseActivity() {
@@ -87,6 +88,8 @@ class TagPictureActivity : BaseActivity() {
         model.errorLiveData.observe(this) {
             if (tagAdapter.itemCount == 0) {
                 tagAdapter.setErrorView(this, it)
+            } else {
+                toast(it)
             }
         }
     }

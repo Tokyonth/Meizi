@@ -12,6 +12,7 @@ import com.tokyonth.mz.base.BaseActivity
 import com.tokyonth.mz.data.AccurateEntity
 import com.tokyonth.mz.databinding.ActivityAccurateSearchBinding
 import com.tokyonth.mz.ui.fragment.search.SearchType
+import com.tokyonth.mz.utils.ktx.toast
 import com.tokyonth.mz.utils.load
 import com.tokyonth.mz.viewmodel.AccurateSearchViewModel
 
@@ -102,6 +103,8 @@ class AccurateSearchActivity : BaseActivity() {
         model.errorLiveData.observe(this) {
             if (accurateSearchAdapter.itemCount == 0) {
                 accurateSearchAdapter.setErrorView(this, it)
+            } else {
+                toast(it)
             }
         }
     }

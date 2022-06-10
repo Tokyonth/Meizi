@@ -9,6 +9,7 @@ import com.tokyonth.mz.Constants
 import com.tokyonth.mz.adapter.AlbumPictureAdapter
 import com.tokyonth.mz.base.BaseFragment
 import com.tokyonth.mz.ui.activity.DetailActivity
+import com.tokyonth.mz.utils.ktx.toast
 import com.tokyonth.mz.viewmodel.AlbumPictureViewModel
 
 abstract class BaseAlbumFragment : BaseFragment() {
@@ -65,6 +66,8 @@ abstract class BaseAlbumFragment : BaseFragment() {
         setAlbumModel().errorLiveData.observe(viewLifecycleOwner) {
             if (setAdapter().itemCount == 0) {
                 setAdapter().setErrorView(requireContext(), it)
+            } else {
+                toast(it)
             }
         }
     }

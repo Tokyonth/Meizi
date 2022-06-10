@@ -10,7 +10,7 @@ import com.tokyonth.mz.http.requestResult
 
 abstract class AlbumPictureViewModel : ViewModel() {
 
-    val albumLiveData = MutableLiveData<List<AlbumPictureEntity>>()
+    val albumLiveData = MutableLiveData<MutableList<AlbumPictureEntity>>()
 
     val loadMoreLiveData = MutableLiveData<Boolean>()
 
@@ -48,9 +48,9 @@ abstract class AlbumPictureViewModel : ViewModel() {
                 refreshLiveData.value = true
                 isRefresh = false
             }
-            albumLiveData.value = it.data
+            albumLiveData.value = it.data?.toMutableList()
         }, {
-            if (pageIndex > 1) {
+            if (pageIndex >= 1) {
                 pageIndex -= 1
             }
             if (isLoadMore) {

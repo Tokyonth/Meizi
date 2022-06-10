@@ -52,7 +52,7 @@ abstract class BaseAlbumFragment : BaseFragment() {
     override fun initObserve() {
         super.initObserve()
         setAlbumModel().albumLiveData.observe(viewLifecycleOwner) {
-            setAdapter().submitData(it)
+            setAdapter().addData(it)
         }
         setAlbumModel().refreshLiveData.observe(viewLifecycleOwner) {
             if (it) {

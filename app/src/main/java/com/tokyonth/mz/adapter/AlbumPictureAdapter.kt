@@ -13,25 +13,14 @@ import com.tokyonth.mz.databinding.LayoutRvPlaceholderBinding
 @SuppressLint("NotifyDataSetChanged")
 abstract class AlbumPictureAdapter<B : ViewBinding> : BaseAdapter<AlbumPictureEntity, B>() {
 
-    private val data = ArrayList<AlbumPictureEntity>()
-
     private var itemClick: ((AlbumPictureEntity) -> Unit)? = null
-
-    init {
-        setData(data)
-    }
 
     fun setItemClick(itemClick: (AlbumPictureEntity) -> Unit) {
         this.itemClick = itemClick
     }
 
-    fun submitData(data: List<AlbumPictureEntity>) {
-        this.data.addAll(data)
-        notifyDataSetChanged()
-    }
-
     fun clearData() {
-        data.clear()
+        getData().clear()
         notifyDataSetChanged()
     }
 

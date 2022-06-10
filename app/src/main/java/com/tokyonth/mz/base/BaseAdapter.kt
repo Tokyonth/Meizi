@@ -3,8 +3,8 @@ package com.tokyonth.mz.base
 import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
@@ -16,25 +16,32 @@ abstract class BaseAdapter<T, B : ViewBinding> :
 
     abstract fun convert(data: T, holder: BaseViewHolder<B>)
 
+    private var dataList: MutableList<T> = ArrayList()
+
     private var placeholderView: ViewBinding? = null
 
-    private var dataList: List<T>? = null
+    private var isPlaceholderMode = false
 
-    private var viewType = 0
-
-    fun setData(dataList: List<T>) {
+    fun setData(dataList: MutableList<T>) {
         this.dataList = dataList
+        isPlaceholderMode = false
         notifyDataSetChanged()
     }
 
-    fun getData(): List<T> {
-        return dataList!!
+    fun addData(dataList: MutableList<T>) {
+        this.dataList.addAll(dataList)
+        isPlaceholderMode = false
+        notifyDataSetChanged()
+    }
+
+    fun getData(): MutableList<T> {
+        return dataList
     }
 
     fun setPlaceholderView(viewBinding: ViewBinding) {
         placeholderView = viewBinding
-        dataList = null
-        viewType = -1
+        dataList.clear()
+        isPlaceholderMode = true
         notifyItemChanged(0)
     }
 
@@ -50,7 +57,7 @@ abstract class BaseAdapter<T, B : ViewBinding> :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is BaseViewHolder<*>) {
             if (!dataList.isNullOrEmpty()) {
-                convert(dataList!![position], holder as BaseViewHolder<B>)
+                convert(dataList[position], holder as BaseViewHolder<B>)
             }
         } else {
             (holder as PlaceholderViewHolder).bind()
@@ -58,15 +65,19 @@ abstract class BaseAdapter<T, B : ViewBinding> :
     }
 
     override fun getItemCount(): Int {
-        return if (viewType == 0) {
-            dataList?.size ?: 0
-        } else {
+        return if (isPlaceholderMode) {
             1
+        } else {
+            dataList.size
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return viewType
+        return if (isPlaceholderMode) {
+            1
+        } else {
+            0
+        }
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -79,7 +90,7 @@ abstract class BaseAdapter<T, B : ViewBinding> :
 
     inner class RvSpanSize(private val spanSize: Int) : GridLayoutManager.SpanSizeLookup() {
         override fun getSpanSize(position: Int): Int {
-            return if (viewType == -1) {
+            return if (isPlaceholderMode) {
                 spanSize
             } else {
                 1
@@ -98,8 +109,7 @@ class BaseViewHolder<B : ViewBinding>(private val binding: B) :
 
 }
 
-class PlaceholderViewHolder(itemView: View) :
-    RecyclerView.ViewHolder(itemView) {
+class PlaceholderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind() {
         itemView.layoutParams = ViewGroup.LayoutParams(

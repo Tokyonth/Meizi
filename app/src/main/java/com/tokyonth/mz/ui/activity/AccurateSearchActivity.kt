@@ -78,7 +78,7 @@ class AccurateSearchActivity : BaseActivity() {
                 val num = abs(i.toFloat()) / 100f
                 binding.llAccurateInfo.alpha = 1 - num
                 binding.tvToolbar.alpha = num
-/*                if (abs(verticalOffset) >= appBarLayout.totalScrollRange) {
+                /*if (abs(verticalOffset) >= appBarLayout.totalScrollRange) {
 
                 } else if (verticalOffset == 0) {
 
@@ -89,7 +89,7 @@ class AccurateSearchActivity : BaseActivity() {
     override fun initObserve() {
         super.initObserve()
         model.albumLiveData.observe(this) {
-            accurateSearchAdapter.submitData(it)
+            accurateSearchAdapter.addData(it)
         }
         model.refreshLiveData.observe(this) {
             if (it) {

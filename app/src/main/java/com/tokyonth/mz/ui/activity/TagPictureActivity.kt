@@ -74,7 +74,7 @@ class TagPictureActivity : BaseActivity() {
     override fun initObserve() {
         super.initObserve()
         model.pictureLiveData.observe(this) {
-            tagAdapter.submitData(it)
+            tagAdapter.addData(it)
         }
         model.refreshLiveData.observe(this) {
             if (it) {

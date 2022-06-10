@@ -15,25 +15,14 @@ import com.tokyonth.mz.utils.load
 @SuppressLint("NotifyDataSetChanged")
 class TagPictureAdapter : BaseAdapter<AlbumTagEntity, ItemTagPictureBinding>() {
 
-    private val data = ArrayList<AlbumTagEntity>()
-
     private var itemClick: ((AlbumTagEntity) -> Unit)? = null
-
-    init {
-        setData(data)
-    }
 
     fun setItemClick(itemClick: (AlbumTagEntity) -> Unit) {
         this.itemClick = itemClick
     }
 
-    fun submitData(data: List<AlbumTagEntity>) {
-        this.data.addAll(data)
-        notifyDataSetChanged()
-    }
-
     fun clearData() {
-        data.clear()
+        getData().clear()
         notifyDataSetChanged()
     }
 

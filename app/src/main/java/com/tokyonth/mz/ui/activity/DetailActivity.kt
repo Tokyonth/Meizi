@@ -72,7 +72,8 @@ class DetailActivity : BaseActivity() {
     }
 
     private fun display(detailAlbumEntity: DetailAlbumEntity) {
-        detailAdapter.setData(detailAlbumEntity.data!!)
+        val data = detailAlbumEntity.data!!.toMutableList()
+        detailAdapter.addData(data)
         binding.ivMotelClover.visibleOrGone(true)
         binding.ivTeamClover.visibleOrGone(true)
         binding.ivTeamClover.load(detailAlbumEntity.jigouPic, isCircle = true)

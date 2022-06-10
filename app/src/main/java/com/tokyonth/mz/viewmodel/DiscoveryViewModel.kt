@@ -9,11 +9,11 @@ import com.tokyonth.mz.http.requestResult
 
 class DiscoveryViewModel : ViewModel() {
 
-    val categoryTagViewModel = MutableLiveData<List<AlbumTagEntity>>()
+    val categoryTagViewModel = MutableLiveData<List<AlbumTagEntity>?>()
 
-    val teamTagViewModel = MutableLiveData<List<AlbumTagEntity>>()
+    val teamTagViewModel = MutableLiveData<List<AlbumTagEntity>?>()
 
-    val motelTagViewModel = MutableLiveData<List<AlbumTagEntity>>()
+    val motelTagViewModel = MutableLiveData<List<AlbumTagEntity>?>()
 
     fun getCategoryTag() {
         requestResult({
@@ -21,7 +21,7 @@ class DiscoveryViewModel : ViewModel() {
         }, {
             categoryTagViewModel.value = it.data
         }, {
-
+            categoryTagViewModel.value = null
         })
     }
 
@@ -31,7 +31,7 @@ class DiscoveryViewModel : ViewModel() {
         }, {
             teamTagViewModel.value = it.data
         }, {
-
+            teamTagViewModel.value = null
         })
     }
 
@@ -41,7 +41,7 @@ class DiscoveryViewModel : ViewModel() {
         }, {
             motelTagViewModel.value = it.data
         }, {
-
+            motelTagViewModel.value = null
         })
     }
 

@@ -11,7 +11,7 @@ import com.tokyonth.mz.http.requestResult
 
 class TagPictureViewModel : ViewModel() {
 
-    val pictureLiveData = MutableLiveData<List<AlbumTagEntity>>()
+    val pictureLiveData = MutableLiveData<MutableList<AlbumTagEntity>>()
 
     val loadMoreLiveData = MutableLiveData<Boolean>()
 
@@ -66,9 +66,9 @@ class TagPictureViewModel : ViewModel() {
                 refreshLiveData.value = true
                 isRefresh = false
             }
-            pictureLiveData.value = it.data
+            pictureLiveData.value = it.data?.toMutableList()
         }, {
-            if (pageIndex > 1) {
+            if (pageIndex >= 1) {
                 pageIndex -= 1
             }
             if (isLoadMore) {

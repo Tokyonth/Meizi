@@ -107,10 +107,20 @@ class DiscoveryClassView : LinearLayout {
         }
     }
 
-    fun setData(searchType: SearchType, list: List<AlbumTagEntity>) {
-        val indexGroup = RandomUtils.start(4, list.size - 1)
-        indexGroup.forEach {
-            ivLl?.addView(buildView(searchType, list[it]))
+    fun setData(searchType: SearchType, list: List<AlbumTagEntity>?) {
+        if (list != null) {
+            val indexGroup = RandomUtils.start(4, list.size - 1)
+            indexGroup.forEach {
+                ivLl?.addView(buildView(searchType, list[it]))
+            }
+        } else {
+            val ivError = ImageView(context).apply {
+                val size = width / 4 - 24
+                layoutParams = LayoutParams(size, size)
+                setPadding(8.dp2px().toInt())
+                setImageResource(R.drawable.ic_round_error_outline)
+            }
+            ivLl?.addView(ivError)
         }
     }
 

@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_mine"
-        android:icon="@drawable/ic_round_settings"
+        android:icon="@drawable/ic_round_account_circle"
         android:title="@string/title_mine" />
 
 </menu>

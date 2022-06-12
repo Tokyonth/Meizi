@@ -10,7 +10,7 @@ import com.tokyonth.mz.App
 import com.tokyonth.mz.Constants
 
 /**
- * Tokyonth
+ * Tokyonth 2022, 5, 1
  */
 object SPUtils {
 

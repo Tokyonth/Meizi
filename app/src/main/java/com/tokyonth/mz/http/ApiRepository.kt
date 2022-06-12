@@ -1,13 +1,13 @@
 package com.tokyonth.mz.http
 
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
 import com.tokyonth.mz.http.interceptor.AppendParamInterceptor
 import com.tokyonth.mz.http.interceptor.LogInterceptor
-import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiRepository {
 

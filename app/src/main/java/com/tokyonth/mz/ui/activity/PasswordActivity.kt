@@ -10,6 +10,7 @@ import com.tokyonth.mz.Constants
 import com.tokyonth.mz.R
 import com.tokyonth.mz.base.BaseActivity
 import com.tokyonth.mz.databinding.ActivityPasswordBinding
+import com.tokyonth.mz.utils.SPUtils.delSP
 import com.tokyonth.mz.utils.SPUtils.getSP
 import com.tokyonth.mz.utils.SPUtils.putSP
 import com.tokyonth.mz.utils.ktx.snack
@@ -76,7 +77,7 @@ class PasswordActivity : BaseActivity() {
 
     private fun removePwd(pwd: String) {
         if (pwd == getSP(Constants.SP_APP_PASSWORD, "")) {
-            putSP(Constants.SP_APP_PASSWORD, "")
+            delSP(Constants.SP_APP_PASSWORD)
             putSP(Constants.SP_NEED_PASSWORD, false)
             finish()
         } else {

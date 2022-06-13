@@ -21,7 +21,9 @@ class GridAlbumAdapter : BaseAdapter<String, ItemGridAlbumBinding>() {
     }
 
     override fun convert(data: String, holder: BaseViewHolder<ItemGridAlbumBinding>) {
+        val index = holder.bindingAdapterPosition + 1
         holder.getItemBinding().ivAlbumGrid.load(data)
+        holder.getItemBinding().tvAlbumGridIndex.text = index.toString()
         holder.itemView.setOnClickListener {
             itemClick?.invoke(holder.bindingAdapterPosition)
         }

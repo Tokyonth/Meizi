@@ -18,6 +18,7 @@ import com.tokyonth.mz.utils.ktx.visibleOrGone
 import com.tokyonth.mz.utils.load
 import com.tokyonth.mz.viewmodel.DetailAlbumViewModel
 import com.tokyonth.mz.widget.AlbumGirdDialog
+import com.tokyonth.mz.widget.AlbumTagsDialog
 
 @SuppressLint("SetTextI18n")
 class DetailActivity : BaseActivity() {
@@ -88,14 +89,23 @@ class DetailActivity : BaseActivity() {
             AlbumGirdDialog(this)
                 .setData(detailAdapter.getData()) {
                     binding.vpDetail.currentItem = it
-                }.show()
+                }
+        }
+        binding.ivAlbumTags.setOnClickListener {
+            AlbumTagsDialog(this)
+                .setData(detailAlbumEntity.tags) {
+                    startAccurateSearch(
+                        SearchType.CATEGORY, it.id, AccurateEntity(
+                            it.name, "", it.pic
+                        )
+                    )
+                }
         }
         arrayOf(binding.ivMotelClover, binding.tvMotelName).forEach { v ->
             v.setOnClickListener {
                 startAccurateSearch(
                     SearchType.MOTEL, detailAlbumEntity.motelId, AccurateEntity(
-                        detailAlbumEntity.motelName,
-                        detailAlbumEntity.text,
+                        detailAlbumEntity.motelName, "",
                         detailAlbumEntity.motelPic
                     )
                 )
@@ -105,8 +115,7 @@ class DetailActivity : BaseActivity() {
             v.setOnClickListener {
                 startAccurateSearch(
                     SearchType.TEAM, detailAlbumEntity.jigouId, AccurateEntity(
-                        detailAlbumEntity.jigouName,
-                        detailAlbumEntity.text,
+                        detailAlbumEntity.jigouName, "",
                         detailAlbumEntity.jigouPic
                     )
                 )

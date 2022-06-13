@@ -55,6 +55,7 @@ dependencies {
 
     implementation 'io.github.panpf.sketch3:sketch:3.0.0-alpha04'
     implementation 'io.github.panpf.sketch3:sketch-zoom:3.0.0-alpha04'
+    implementation 'io.github.hijamoya:keyboardview:0.0.2'
     implementation 'com.github.st235:flow-layout:1.1.6'
 
     testImplementation 'junit:junit:4.13.2'

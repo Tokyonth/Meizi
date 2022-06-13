@@ -37,10 +37,13 @@ class AlbumGirdDialog(context: Context) :
         }
     }
 
-    fun setData(data: MutableList<String>, itemClick: (Int) -> Unit): AlbumGirdDialog {
+    fun setData(
+        data: MutableList<String>,
+        itemClick: (Int) -> Unit
+    ) {
+        this.show()
         this.itemClick = itemClick
         gridAlbumAdapter.addData(data)
-        return this
     }
 
 }

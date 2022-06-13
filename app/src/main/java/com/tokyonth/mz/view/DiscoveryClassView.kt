@@ -25,6 +25,12 @@ import com.tokyonth.mz.utils.load
 
 class DiscoveryClassView : LinearLayout {
 
+    companion object {
+
+        private const val DEFAULT_ROW_COUNT = 4
+
+    }
+
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
@@ -74,7 +80,7 @@ class DiscoveryClassView : LinearLayout {
     }
 
     private fun buildView(searchType: SearchType, data: AlbumTagEntity): LinearLayout {
-        val size = width / 4 - 24
+        val size = width / DEFAULT_ROW_COUNT - 24
         val iv = ImageView(context).apply {
             layoutParams = LayoutParams(size, size)
             setPadding(8.dp2px().toInt())
@@ -109,7 +115,7 @@ class DiscoveryClassView : LinearLayout {
 
     fun setData(searchType: SearchType, list: List<AlbumTagEntity>?) {
         if (list != null) {
-            val indexGroup = RandomUtils.start(4, list.size - 1)
+            val indexGroup = RandomUtils.start(DEFAULT_ROW_COUNT, list.size - 1)
             indexGroup.forEach {
                 ivLl?.addView(buildView(searchType, list[it]))
             }

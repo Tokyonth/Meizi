@@ -50,7 +50,11 @@ class AccurateSearchActivity : BaseActivity() {
             ivAvatar.load(accurateEntity!!.pic, isCircle = true)
             tvToolbar.text = accurateEntity?.name
             tvTitle.text = accurateEntity?.name
-            tvInfo.text = accurateEntity?.text
+            tvInfo.text = if (accurateEntity?.text.isNullOrEmpty()) {
+                "-"
+            } else {
+                accurateEntity?.text
+            }
         }
         binding.included.refreshAccurateSearch.run {
             autoRefresh()

@@ -6,15 +6,15 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.inputmethodservice.Keyboard
-import android.inputmethodservice.KeyboardView
-import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.util.AttributeSet
 import androidx.appcompat.content.res.AppCompatResources
 
+import com.hijamoya.keyboardview.Keyboard
+import com.hijamoya.keyboardview.KeyboardView
+
 import com.tokyonth.mz.R
 
-class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
+class PwdKeyboardView : KeyboardView, KeyboardView.OnKeyboardActionListener {
 
     companion object {
 
@@ -22,9 +22,9 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
 
     }
 
-    private val delKeyBackground = Color.parseColor("#F5F5F5")
-
     private var keyIconRect: Rect? = null
+
+    private val delKeyBackground = Color.parseColor("#F5F5F5")
 
     constructor(context: Context) : this(context, null)
 
@@ -39,11 +39,11 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
     }
 
     private fun initView(context: Context) {
-        val keyboard = Keyboard(context, R.xml.keyboard_password) // 初始化 keyboard
-        setKeyboard(keyboard)
+        keyboard = Keyboard(context, R.xml.keyboard_password)
         isEnabled = true
         isFocusable = true
-        isPreviewEnabled = false // 设置点击按键不显示预览气泡
+        // 设置点击按键不显示预览气泡
+        isPreviewEnabled = false
         onKeyboardActionListener = this
     }
 
@@ -64,11 +64,7 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
                 // 删除删除按键背景
                 drawKeyBackground(key, canvas, delKeyBackground)
                 // 绘制删除按键图标
-                drawKeyIcon(
-                    key,
-                    canvas,
-                    icon
-                )
+                drawKeyIcon(key, canvas, icon)
             }
         }
     }
@@ -77,9 +73,10 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
      * 绘制按键的背景
      */
     private fun drawKeyBackground(key: Keyboard.Key, canvas: Canvas, color: Int) {
-        val drawable = ColorDrawable(color)
-        drawable.setBounds(key.x, key.y, key.x + key.width, key.y + key.height)
-        drawable.draw(canvas)
+        ColorDrawable(color).run {
+            setBounds(key.x, key.y, key.x + key.width, key.y + key.height)
+            draw(canvas)
+        }
     }
 
     /**
@@ -89,7 +86,6 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
         if (iconDrawable == null) {
             return
         }
-        // 计算按键icon 的rect 范围
         if (keyIconRect == null || keyIconRect!!.isEmpty) {
             // 得到 keyIcon 的显示大小，因为图片放在不同的drawable-dpi目录下，显示大小也不一样
             val intrinsicWidth = iconDrawable.intrinsicWidth
@@ -111,8 +107,10 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
             keyIconRect = Rect(left, top, left + drawWidth, top + drawHeight)
         }
         if (keyIconRect != null && !keyIconRect!!.isEmpty) {
-            iconDrawable.bounds = keyIconRect!!
-            iconDrawable.draw(canvas)
+            iconDrawable.apply {
+                bounds = keyIconRect!!
+                draw(canvas)
+            }
         }
     }
 
@@ -127,12 +125,10 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
         if (primaryCode == KEY_EMPTY) {
             return
         }
-        if (listener != null) {
-            if (primaryCode == Keyboard.KEYCODE_DELETE) {
-                listener!!.onDelete()
-            } else {
-                listener!!.onInput(primaryCode.toChar().toString())
-            }
+        if (primaryCode == Keyboard.KEYCODE_DELETE) {
+            listener?.onDelete()
+        } else {
+            listener?.onInput(primaryCode.toChar().toString())
         }
     }
 
@@ -147,10 +143,8 @@ class PwdKeyboardView : KeyboardView, OnKeyboardActionListener {
     override fun swipeUp() {}
 
     interface OnKeyListener {
-        // 输入回调
         fun onInput(text: String)
 
-        // 删除回调
         fun onDelete()
     }
 

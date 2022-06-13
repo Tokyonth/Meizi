@@ -31,6 +31,14 @@ abstract class AlbumPictureAdapter<B : ViewBinding> : BaseAdapter<AlbumPictureEn
         }
     }
 
+    override fun getItemCount(): Int {
+        return if (getData().isEmpty()) {
+            10
+        } else {
+            super.getItemCount()
+        }
+    }
+
     override fun convert(data: AlbumPictureEntity, holder: BaseViewHolder<B>) {
         holder.itemView.setOnClickListener {
             itemClick?.invoke(data)

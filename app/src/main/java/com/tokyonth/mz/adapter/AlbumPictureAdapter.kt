@@ -32,7 +32,7 @@ abstract class AlbumPictureAdapter<B : ViewBinding> : BaseAdapter<AlbumPictureEn
     }
 
     override fun getItemCount(): Int {
-        return if (getData().isEmpty()) {
+        return if (getData().isEmpty() && !isPlaceholderMode()) {
             10
         } else {
             super.getItemCount()

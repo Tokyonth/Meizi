@@ -45,6 +45,10 @@ abstract class BaseAdapter<T, B : ViewBinding> :
         notifyItemChanged(0)
     }
 
+    fun isPlaceholderMode(): Boolean {
+        return isPlaceholderMode
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
             BaseViewHolder(itemBind(parent, viewType))

@@ -7,13 +7,13 @@ import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
 import com.tokyonth.mz.adapter.AlbumPictureAdapter
 import com.tokyonth.mz.data.AlbumPictureEntity
-import com.tokyonth.mz.databinding.LayoutBaseAlbumPictureBinding
+import com.tokyonth.mz.databinding.LayoutBaseListBinding
 import com.tokyonth.mz.ui.activity.DetailActivity
 import com.tokyonth.mz.viewmodel.AlbumPictureViewModel
 
-class HottestFragment : BaseAlbumFragment<AlbumPictureEntity>() {
+class HottestFragment : BaseListFragment<AlbumPictureEntity>() {
 
-    private val binding: LayoutBaseAlbumPictureBinding by lazyBind()
+    private val binding: LayoutBaseListBinding by lazyBind()
 
     private val model: AlbumPictureViewModel by viewModels()
 
@@ -39,9 +39,9 @@ class HottestFragment : BaseAlbumFragment<AlbumPictureEntity>() {
 
     override fun setAlbumModel() = model
 
-    override fun setRefreshView() = binding.refreshAlbum
+    override fun setRefreshView() = binding.refreshList
 
-    override fun setRecyclerView() = binding.rvAlbumPicture
+    override fun setRecyclerView() = binding.rvList
 
     override fun setAdapter() = hottestAdapter
 

@@ -11,11 +11,11 @@ import com.tokyonth.mz.adapter.AlbumPictureAdapter
 import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.FragmentSearchAlbumBinding
 import com.tokyonth.mz.ui.activity.DetailActivity
-import com.tokyonth.mz.ui.fragment.BaseAlbumFragment
+import com.tokyonth.mz.ui.fragment.BaseListFragment
 import com.tokyonth.mz.utils.ktx.string
 import com.tokyonth.mz.viewmodel.AlbumPictureViewModel
 
-class SearchAlbumFragment : BaseAlbumFragment<AlbumPictureEntity>() {
+class SearchAlbumFragment : BaseListFragment<AlbumPictureEntity>() {
 
     private val binding: FragmentSearchAlbumBinding by lazyBind()
 
@@ -54,9 +54,9 @@ class SearchAlbumFragment : BaseAlbumFragment<AlbumPictureEntity>() {
 
     override fun setAlbumModel() = model
 
-    override fun setRefreshView() = binding.included.refreshAlbum
+    override fun setRefreshView() = binding.included.refreshList
 
-    override fun setRecyclerView() = binding.included.rvAlbumPicture
+    override fun setRecyclerView() = binding.included.rvList
 
     override fun setAdapter() = searchAdapter
 

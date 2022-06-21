@@ -15,6 +15,6 @@
 
     <include
         android:id="@+id/included"
-        layout="@layout/layout_base_album_picture" />
+        layout="@layout/layout_base_list" />
 
 </LinearLayout>

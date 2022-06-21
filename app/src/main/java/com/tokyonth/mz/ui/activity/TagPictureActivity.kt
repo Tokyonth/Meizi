@@ -32,9 +32,9 @@ class TagPictureActivity : BaseListActivity<AlbumTagEntity>() {
 
     override fun setAlbumModel() = model
 
-    override fun setRefreshView() = binding.included.refreshAlbum
+    override fun setRefreshView() = binding.included.refreshList
 
-    override fun setRecyclerView() = binding.included.rvAlbumPicture
+    override fun setRecyclerView() = binding.included.rvList
 
     override fun setAdapter() = tagAdapter
 
@@ -56,7 +56,7 @@ class TagPictureActivity : BaseListActivity<AlbumTagEntity>() {
         super.initView()
         setToolBar(binding.inToolbar.toolbar, title)
         binding.inToolbar.toolbar.navigationIcon?.setTint(Color.parseColor("#444444"))
-        binding.included.rvAlbumPicture.apply {
+        binding.included.rvList.apply {
             layoutManager = GridLayoutManager(this@TagPictureActivity, 4)
             adapter = tagAdapter
         }

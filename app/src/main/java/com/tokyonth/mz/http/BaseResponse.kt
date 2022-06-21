@@ -7,7 +7,7 @@ open class BaseResponse<T> {
     open val data: T? = null
 
     fun isSuccess(): Boolean {
-        return code == 200
+        return code == 200 || code == 1
     }
 
 }

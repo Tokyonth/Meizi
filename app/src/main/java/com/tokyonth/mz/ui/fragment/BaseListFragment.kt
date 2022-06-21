@@ -9,7 +9,7 @@ import com.tokyonth.mz.base.BaseFragment
 import com.tokyonth.mz.utils.ktx.toast
 import com.tokyonth.mz.viewmodel.BaseListViewModel
 
-abstract class BaseAlbumFragment<T> : BaseFragment() {
+abstract class BaseListFragment<T> : BaseFragment() {
 
     abstract fun setAlbumModel(): BaseListViewModel<T>
 

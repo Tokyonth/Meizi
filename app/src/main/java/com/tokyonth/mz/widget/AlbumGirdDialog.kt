@@ -39,11 +39,15 @@ class AlbumGirdDialog(context: Context) :
 
     fun setData(
         data: MutableList<String>,
+        selectIndex: Int,
         itemClick: (Int) -> Unit
     ) {
         this.show()
         this.itemClick = itemClick
-        gridAlbumAdapter.addData(data)
+        gridAlbumAdapter.run {
+            addData(data)
+            setSelect(selectIndex)
+        }
     }
 
 }

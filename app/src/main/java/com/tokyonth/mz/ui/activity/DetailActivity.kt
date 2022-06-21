@@ -87,7 +87,7 @@ class DetailActivity : BaseActivity() {
     private fun initClick(detailAlbumEntity: DetailAlbumEntity) {
         binding.ivAlbumGrid.setOnClickListener {
             AlbumGirdDialog(this)
-                .setData(detailAdapter.getData()) {
+                .setData(detailAdapter.getData(), binding.vpDetail.currentItem) {
                     binding.vpDetail.currentItem = it
                 }
         }

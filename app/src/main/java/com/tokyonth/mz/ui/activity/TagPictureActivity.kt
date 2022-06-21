@@ -9,15 +9,14 @@ import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
 import com.tokyonth.mz.R
 import com.tokyonth.mz.adapter.TagPictureAdapter
-import com.tokyonth.mz.base.BaseActivity
 import com.tokyonth.mz.data.AccurateEntity
+import com.tokyonth.mz.data.AlbumTagEntity
 import com.tokyonth.mz.databinding.ActivityTagPictureBinding
 import com.tokyonth.mz.ui.fragment.search.SearchType
 import com.tokyonth.mz.utils.ktx.string
-import com.tokyonth.mz.utils.ktx.toast
 import com.tokyonth.mz.viewmodel.TagPictureViewModel
 
-class TagPictureActivity : BaseActivity() {
+class TagPictureActivity : BaseListActivity<AlbumTagEntity>() {
 
     private val binding: ActivityTagPictureBinding by lazyBind()
 
@@ -31,7 +30,16 @@ class TagPictureActivity : BaseActivity() {
 
     override fun setVbRoot() = binding
 
+    override fun setAlbumModel() = model
+
+    override fun setRefreshView() = binding.included.refreshAlbum
+
+    override fun setRecyclerView() = binding.included.rvAlbumPicture
+
+    override fun setAdapter() = tagAdapter
+
     override fun initData() {
+        super.initData()
         val type = intent.getIntExtra(Constants.INTENT_KEY_TAG_PICTURE, -1)
         val (title, searchType) = when (type) {
             0 -> Pair(string(R.string.label_category), SearchType.CATEGORY)
@@ -45,17 +53,9 @@ class TagPictureActivity : BaseActivity() {
     }
 
     override fun initView() {
+        super.initView()
         setToolBar(binding.inToolbar.toolbar, title)
         binding.inToolbar.toolbar.navigationIcon?.setTint(Color.parseColor("#444444"))
-        binding.included.refreshAlbum.run {
-            autoRefresh()
-            setOnRefreshListener {
-                model.refreshPage()
-            }
-            setOnLoadMoreListener {
-                model.nextPage()
-            }
-        }
         binding.included.rvAlbumPicture.apply {
             layoutManager = GridLayoutManager(this@TagPictureActivity, 4)
             adapter = tagAdapter
@@ -67,29 +67,6 @@ class TagPictureActivity : BaseActivity() {
                 putExtra(Constants.INTENT_KEY_ACCURATE, AccurateEntity(it.name, it.text, it.pic))
             }.let {
                 startActivity(it)
-            }
-        }
-    }
-
-    override fun initObserve() {
-        super.initObserve()
-        model.successLiveData.observe(this) {
-            tagAdapter.addData(it)
-        }
-        model.refreshLiveData.observe(this) {
-            if (it) {
-                tagAdapter.clearData()
-            }
-            binding.included.refreshAlbum.finishRefresh(it)
-        }
-        model.loadMoreLiveData.observe(this) {
-            binding.included.refreshAlbum.finishLoadMore(it)
-        }
-        model.errorLiveData.observe(this) {
-            if (tagAdapter.itemCount == 0) {
-                tagAdapter.setErrorView(this, it)
-            } else {
-                toast(it)
             }
         }
     }

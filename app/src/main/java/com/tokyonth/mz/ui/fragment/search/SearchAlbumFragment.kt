@@ -1,18 +1,21 @@
 package com.tokyonth.mz.ui.fragment.search
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.fragment.app.viewModels
 
 import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
 import com.tokyonth.mz.R
 import com.tokyonth.mz.adapter.AlbumPictureAdapter
+import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.FragmentSearchAlbumBinding
+import com.tokyonth.mz.ui.activity.DetailActivity
 import com.tokyonth.mz.ui.fragment.BaseAlbumFragment
 import com.tokyonth.mz.utils.ktx.string
 import com.tokyonth.mz.viewmodel.AlbumPictureViewModel
 
-class SearchAlbumFragment : BaseAlbumFragment() {
+class SearchAlbumFragment : BaseAlbumFragment<AlbumPictureEntity>() {
 
     private val binding: FragmentSearchAlbumBinding by lazyBind()
 
@@ -39,6 +42,13 @@ class SearchAlbumFragment : BaseAlbumFragment() {
         binding.tvSearchAlbumTitle.text = string(R.string.text_search) + ": $words"
         binding.ivBack.setOnClickListener {
             requireActivity().onBackPressed()
+        }
+        searchAdapter.setItemClick {
+            Intent(requireContext(), DetailActivity::class.java).apply {
+                putExtra(Constants.INTENT_KEY_ALBUM_ID, it.id)
+            }.let {
+                startActivity(it)
+            }
         }
     }
 

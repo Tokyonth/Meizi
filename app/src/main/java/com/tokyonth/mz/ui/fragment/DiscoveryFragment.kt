@@ -39,9 +39,11 @@ class DiscoveryFragment : BaseFragment() {
             binding.disTeam
         ).forEachIndexed { index, view ->
             view.setOnMoreClick {
-                val intent = Intent(requireContext(), TagPictureActivity::class.java)
-                intent.putExtra(Constants.INTENT_KEY_TAG_PICTURE, index)
-                startActivity(intent)
+                Intent(requireContext(), TagPictureActivity::class.java).apply {
+                    putExtra(Constants.INTENT_KEY_TAG_PICTURE, index)
+                    startActivity(this)
+                }
+
             }
         }
     }

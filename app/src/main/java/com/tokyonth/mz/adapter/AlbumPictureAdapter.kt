@@ -9,7 +9,7 @@ import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.ItemAlbumPictureBinding
 import com.tokyonth.mz.utils.load
 
-class AlbumPictureAdapter : BaseAlbumAdapter<ItemAlbumPictureBinding>() {
+class AlbumPictureAdapter : BaseListAdapter<AlbumPictureEntity, ItemAlbumPictureBinding>() {
 
     override fun itemBind(parent: ViewGroup, viewType: Int): ItemAlbumPictureBinding {
         return ItemAlbumPictureBinding.inflate(LayoutInflater.from(parent.context))
@@ -17,8 +17,8 @@ class AlbumPictureAdapter : BaseAlbumAdapter<ItemAlbumPictureBinding>() {
 
     @SuppressLint("SetTextI18n")
     override fun convert(
-        data: AlbumPictureEntity, holder:
-        BaseViewHolder<ItemAlbumPictureBinding>
+        data: AlbumPictureEntity,
+        holder: BaseViewHolder<ItemAlbumPictureBinding>
     ) {
         super.convert(data, holder)
         holder.getItemBinding().tvPictureAlbumName.text = data.name

@@ -1,15 +1,15 @@
-package com.tokyonth.mz.ui.fragment
+package com.tokyonth.mz.ui.activity
 
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+
 import com.tokyonth.mz.adapter.BaseListAdapter
-import com.tokyonth.mz.base.BaseFragment
+import com.tokyonth.mz.base.BaseActivity
+import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.utils.ktx.toast
 import com.tokyonth.mz.viewmodel.BaseListViewModel
 
-abstract class BaseAlbumFragment<T> : BaseFragment() {
+abstract class BaseListActivity<T> : BaseActivity() {
 
     abstract fun setAlbumModel(): BaseListViewModel<T>
 
@@ -33,29 +33,25 @@ abstract class BaseAlbumFragment<T> : BaseFragment() {
                 setAlbumModel().nextPage()
             }
         }
-        setRecyclerView().apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = setAdapter()
-        }
     }
 
     override fun initObserve() {
         super.initObserve()
-        setAlbumModel().successLiveData.observe(viewLifecycleOwner) {
+        setAlbumModel().successLiveData.observe(this) {
             setAdapter().addData(it)
         }
-        setAlbumModel().refreshLiveData.observe(viewLifecycleOwner) {
+        setAlbumModel().refreshLiveData.observe(this) {
             if (it) {
                 setAdapter().clearData()
             }
             setRefreshView().finishRefresh(it)
         }
-        setAlbumModel().loadMoreLiveData.observe(viewLifecycleOwner) {
+        setAlbumModel().loadMoreLiveData.observe(this) {
             setRefreshView().finishLoadMore(it)
         }
-        setAlbumModel().errorLiveData.observe(viewLifecycleOwner) {
+        setAlbumModel().errorLiveData.observe(this) {
             if (setAdapter().itemCount == 0) {
-                setAdapter().setErrorView(requireContext(), it)
+                setAdapter().setErrorView(this, it)
             } else {
                 toast(it)
             }

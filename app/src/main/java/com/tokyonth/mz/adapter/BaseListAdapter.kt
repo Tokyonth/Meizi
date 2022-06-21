@@ -7,16 +7,14 @@ import androidx.viewbinding.ViewBinding
 
 import com.tokyonth.mz.base.BaseAdapter
 import com.tokyonth.mz.base.BaseViewHolder
-import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.databinding.LayoutRvPlaceholderBinding
 
 @SuppressLint("NotifyDataSetChanged")
-abstract class BaseAlbumAdapter<B : ViewBinding> :
-    BaseAdapter<AlbumPictureEntity, B>() {
+abstract class BaseListAdapter<T, B : ViewBinding> : BaseAdapter<T, B>() {
 
-    private var itemClick: ((AlbumPictureEntity) -> Unit)? = null
+    private var itemClick: ((T) -> Unit)? = null
 
-    fun setItemClick(itemClick: (AlbumPictureEntity) -> Unit) {
+    fun setItemClick(itemClick: (T) -> Unit) {
         this.itemClick = itemClick
     }
 
@@ -40,7 +38,7 @@ abstract class BaseAlbumAdapter<B : ViewBinding> :
         }
     }
 
-    override fun convert(data: AlbumPictureEntity, holder: BaseViewHolder<B>) {
+    override fun convert(data: T, holder: BaseViewHolder<B>) {
         holder.itemView.setOnClickListener {
             itemClick?.invoke(data)
         }

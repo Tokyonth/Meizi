@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
 import com.tokyonth.mz.http.interceptor.AppendParamInterceptor
+import com.tokyonth.mz.http.interceptor.BaseUrlInterceptor
 import com.tokyonth.mz.http.interceptor.LogInterceptor
 
 class ApiRepository {
@@ -35,10 +36,10 @@ class ApiRepository {
     private val okHttpClient: OkHttpClient
         get() {
             val builder = OkHttpClient.Builder().apply {
-                //addInterceptor(BaseUrlInterceptor())
+                addInterceptor(BaseUrlInterceptor())
                 addInterceptor(AppendParamInterceptor())
                 addInterceptor(LogInterceptor())
-                connectTimeout(10, TimeUnit.SECONDS)
+                connectTimeout(8, TimeUnit.SECONDS)
                 readTimeout(5, TimeUnit.SECONDS)
                 writeTimeout(5, TimeUnit.SECONDS)
             }

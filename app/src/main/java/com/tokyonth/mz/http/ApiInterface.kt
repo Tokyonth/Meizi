@@ -3,9 +3,10 @@ package com.tokyonth.mz.http
 import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.data.AlbumTagEntity
 import com.tokyonth.mz.data.DetailAlbumEntity
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import com.tokyonth.mz.data.MovieEntity
+import com.tokyonth.mz.http.url.ReplaceBaseUrl
+
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -77,5 +78,10 @@ interface ApiInterface {
 
     @POST("/api/lists/resou")
     suspend fun getHotTag(): BaseResponse<List<String>>
+
+    @ReplaceBaseUrl(url = "http://mygzycj.com")
+    @Headers("replace:url")
+    @POST("/sapi.php")
+    suspend fun getMygzy(@Query("ac") type: String): BaseResponse<List<MovieEntity>>
 
 }

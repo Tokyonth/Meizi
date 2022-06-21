@@ -3,25 +3,30 @@ package com.tokyonth.mz.ui.fragment
 import androidx.fragment.app.viewModels
 
 import com.tokyonth.bt.utils.ktx.lazyBind
-import com.tokyonth.mz.adapter.HottestAlbumAdapter
-import com.tokyonth.mz.databinding.FragmentHottestBinding
-import com.tokyonth.mz.viewmodel.HottestViewModel
+import com.tokyonth.mz.adapter.AlbumPictureAdapter
+import com.tokyonth.mz.databinding.LayoutBaseAlbumPictureBinding
+import com.tokyonth.mz.viewmodel.AlbumPictureViewModel
 
 class HottestFragment : BaseAlbumFragment() {
 
-    private val binding: FragmentHottestBinding by lazyBind()
+    private val binding: LayoutBaseAlbumPictureBinding by lazyBind()
 
-    private val model: HottestViewModel by viewModels()
+    private val model: AlbumPictureViewModel by viewModels()
 
-    private val hottestAdapter = HottestAlbumAdapter()
+    private val hottestAdapter = AlbumPictureAdapter()
+
+    override fun initData() {
+        super.initData()
+        model.setAlbumType(AlbumPictureViewModel.HOTTEST)
+    }
 
     override fun setVbRoot() = binding
 
     override fun setAlbumModel() = model
 
-    override fun setRefreshView() = binding.refreshHottest
+    override fun setRefreshView() = binding.refreshAlbum
 
-    override fun setRecyclerView() = binding.rvHottestAlbum
+    override fun setRecyclerView() = binding.rvAlbumPicture
 
     override fun setAdapter() = hottestAdapter
 

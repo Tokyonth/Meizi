@@ -21,9 +21,11 @@ class DiscoveryFragment : BaseFragment() {
     override fun setVbRoot() = binding
 
     override fun initData() {
-        model.getCategoryTag()
-        model.getTeamTag()
-        model.getMotelTag()
+        model.run {
+            getCategoryTag()
+            getTeamTag()
+            getMotelTag()
+        }
     }
 
     override fun initView() {

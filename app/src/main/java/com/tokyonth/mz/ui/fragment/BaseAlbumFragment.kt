@@ -6,21 +6,22 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tokyonth.mz.Constants
-import com.tokyonth.mz.adapter.AlbumPictureAdapter
+import com.tokyonth.mz.adapter.BaseAlbumAdapter
 import com.tokyonth.mz.base.BaseFragment
+import com.tokyonth.mz.data.AlbumPictureEntity
 import com.tokyonth.mz.ui.activity.DetailActivity
 import com.tokyonth.mz.utils.ktx.toast
-import com.tokyonth.mz.viewmodel.AlbumPictureViewModel
+import com.tokyonth.mz.viewmodel.BaseListViewModel
 
 abstract class BaseAlbumFragment : BaseFragment() {
 
-    abstract fun setAlbumModel(): AlbumPictureViewModel
+    abstract fun setAlbumModel(): BaseListViewModel<AlbumPictureEntity>
 
     abstract fun setRefreshView(): SmartRefreshLayout
 
     abstract fun setRecyclerView(): RecyclerView
 
-    abstract fun setAdapter(): AlbumPictureAdapter<*>
+    abstract fun setAdapter(): BaseAlbumAdapter<*>
 
     override fun initData() {
 
@@ -51,7 +52,7 @@ abstract class BaseAlbumFragment : BaseFragment() {
 
     override fun initObserve() {
         super.initObserve()
-        setAlbumModel().albumLiveData.observe(viewLifecycleOwner) {
+        setAlbumModel().successLiveData.observe(viewLifecycleOwner) {
             setAdapter().addData(it)
         }
         setAlbumModel().refreshLiveData.observe(viewLifecycleOwner) {

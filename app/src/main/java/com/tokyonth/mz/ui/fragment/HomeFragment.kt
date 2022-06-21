@@ -21,7 +21,7 @@ class HomeFragment : BaseFragment() {
 
     override fun initView() {
         binding.vpHome.apply {
-            adapter = FragPagerAdapter(requireActivity()) {
+            adapter = FragPagerAdapter(childFragmentManager, lifecycle) {
                 add(ChosenFragment())
                 add(LatestFragment())
                 add(HottestFragment())

@@ -28,10 +28,11 @@ class AlbumTagsDialog(context: Context) :
         val params = FlowLayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        params.setMargins(
-            4.dp2px().toInt(), 0, 4.dp2px().toInt(), 0
-        )
+        ).apply {
+            setMargins(
+                4.dp2px().toInt(), 0, 4.dp2px().toInt(), 0
+            )
+        }
         return Chip(context).apply {
             text = string
             layoutParams = params

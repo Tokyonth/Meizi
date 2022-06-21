@@ -36,8 +36,9 @@ class MainActivity : BaseActivity() {
 
     override fun initView() {
         binding.vpMain.apply {
-            adapter = FragPagerAdapter(this@MainActivity) {
+            adapter = FragPagerAdapter(supportFragmentManager, lifecycle) {
                 add(HomeFragment())
+                add(MovieFragment())
                 add(DiscoveryFragment())
                 add(MineFragment())
             }
@@ -47,8 +48,9 @@ class MainActivity : BaseActivity() {
         binding.navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> binding.vpMain.setCurrentItem(0, false)
-                R.id.navigation_discovery -> binding.vpMain.setCurrentItem(1, false)
-                R.id.navigation_mine -> binding.vpMain.setCurrentItem(2, false)
+                R.id.navigation_movie -> binding.vpMain.setCurrentItem(1, false)
+                R.id.navigation_discovery -> binding.vpMain.setCurrentItem(2, false)
+                R.id.navigation_mine -> binding.vpMain.setCurrentItem(3, false)
             }
             true
         }

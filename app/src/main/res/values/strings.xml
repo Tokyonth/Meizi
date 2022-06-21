@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">图</string>
+    <string name="app_name">LSP</string>
     <string name="title_home">图片</string>
+    <string name="title_movie">视频</string>
     <string name="title_discovery">发现</string>
     <string name="title_mine">我的</string>
 
@@ -8,7 +9,7 @@
     <string name="title_input_pwd">请输入密码</string>
     <string name="title_clear_cache">清除缓存</string>
     <string name="text_final_version">Version 1.0</string>
-    <string name="text_album_count">0 P</string>
+    <string name="text_album_count">0P</string>
     <string name="text_search">搜索</string>
     <string name="text_hot_search">热门搜索</string>
     <string name="text_pwd_verified">验证密码</string>

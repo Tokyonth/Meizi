@@ -1,48 +1,29 @@
 package com.tokyonth.mz.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
-import androidx.viewbinding.ViewBinding
+import android.view.ViewGroup
 
-import com.tokyonth.mz.base.BaseAdapter
 import com.tokyonth.mz.base.BaseViewHolder
 import com.tokyonth.mz.data.AlbumPictureEntity
-import com.tokyonth.mz.databinding.LayoutRvPlaceholderBinding
+import com.tokyonth.mz.databinding.ItemAlbumPictureBinding
+import com.tokyonth.mz.utils.load
 
-@SuppressLint("NotifyDataSetChanged")
-abstract class AlbumPictureAdapter<B : ViewBinding> : BaseAdapter<AlbumPictureEntity, B>() {
+class AlbumPictureAdapter : BaseAlbumAdapter<ItemAlbumPictureBinding>() {
 
-    private var itemClick: ((AlbumPictureEntity) -> Unit)? = null
-
-    fun setItemClick(itemClick: (AlbumPictureEntity) -> Unit) {
-        this.itemClick = itemClick
+    override fun itemBind(parent: ViewGroup, viewType: Int): ItemAlbumPictureBinding {
+        return ItemAlbumPictureBinding.inflate(LayoutInflater.from(parent.context))
     }
 
-    fun clearData() {
-        getData().clear()
-        notifyDataSetChanged()
-    }
-
-    fun setErrorView(context: Context, info: String) {
-        LayoutRvPlaceholderBinding.inflate(LayoutInflater.from(context)).let {
-            it.tvErrorInfo.text = info
-            setPlaceholderView(it)
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return if (getData().isEmpty() && !isPlaceholderMode()) {
-            10
-        } else {
-            super.getItemCount()
-        }
-    }
-
-    override fun convert(data: AlbumPictureEntity, holder: BaseViewHolder<B>) {
-        holder.itemView.setOnClickListener {
-            itemClick?.invoke(data)
-        }
+    @SuppressLint("SetTextI18n")
+    override fun convert(
+        data: AlbumPictureEntity, holder:
+        BaseViewHolder<ItemAlbumPictureBinding>
+    ) {
+        super.convert(data, holder)
+        holder.getItemBinding().tvPictureAlbumName.text = data.name
+        holder.getItemBinding().tvPictureAlbumCount.text = "${data.nums}P"
+        holder.getItemBinding().ivAlbumPicture.load(data.pic)
     }
 
 }

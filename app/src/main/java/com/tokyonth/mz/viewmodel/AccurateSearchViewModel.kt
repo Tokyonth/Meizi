@@ -5,7 +5,7 @@ import com.tokyonth.mz.http.ApiRepository
 import com.tokyonth.mz.http.BaseResponse
 import com.tokyonth.mz.ui.fragment.search.SearchType
 
-class AccurateSearchViewModel : AlbumPictureViewModel() {
+class AccurateSearchViewModel : BaseListViewModel<AlbumPictureEntity>() {
 
     private var searchType: SearchType? = null
 
@@ -13,20 +13,12 @@ class AccurateSearchViewModel : AlbumPictureViewModel() {
         this.searchType = searchType
     }
 
-    override suspend fun setAlbumApi(map: HashMap<String, String>): BaseResponse<List<AlbumPictureEntity>> {
+    override suspend fun setListApi(map: HashMap<String, String>): BaseResponse<List<AlbumPictureEntity>>? {
         return when (searchType) {
-            SearchType.CATEGORY -> {
-                ApiRepository.api.getTagAlbum(map)
-            }
-            SearchType.TEAM -> {
-                ApiRepository.api.getTeamAlbum(map)
-            }
-            SearchType.MOTEL -> {
-                ApiRepository.api.getMotelAlbum(map)
-            }
-            else -> {
-                ApiRepository.api.getSearchAlbum(map)
-            }
+            SearchType.CATEGORY -> ApiRepository.api.getTagAlbum(map)
+            SearchType.TEAM -> ApiRepository.api.getTeamAlbum(map)
+            SearchType.MOTEL -> ApiRepository.api.getMotelAlbum(map)
+            else -> null
         }
     }
 

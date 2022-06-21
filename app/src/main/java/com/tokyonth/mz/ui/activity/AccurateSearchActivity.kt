@@ -7,7 +7,7 @@ import com.google.android.material.appbar.AppBarLayout
 
 import com.tokyonth.bt.utils.ktx.lazyBind
 import com.tokyonth.mz.Constants
-import com.tokyonth.mz.adapter.AccurateSearchAdapter
+import com.tokyonth.mz.adapter.AlbumPictureAdapter
 import com.tokyonth.mz.base.BaseActivity
 import com.tokyonth.mz.data.AccurateEntity
 import com.tokyonth.mz.databinding.ActivityAccurateSearchBinding
@@ -24,7 +24,7 @@ class AccurateSearchActivity : BaseActivity() {
 
     private val model: AccurateSearchViewModel by viewModels()
 
-    private val accurateSearchAdapter = AccurateSearchAdapter()
+    private val albumPictureAdapter = AlbumPictureAdapter()
 
     private var accurateEntity: AccurateEntity? = null
 
@@ -39,8 +39,10 @@ class AccurateSearchActivity : BaseActivity() {
         val searchId = intent.getStringExtra(Constants.INTENT_KEY_ALBUM_ID)
         accurateEntity =
             intent.getSerializableExtra(Constants.INTENT_KEY_ACCURATE) as AccurateEntity?
-        model.addParameterData(Pair(Constants.API_ALBUM_ID_MAP_KEY, searchId!!))
-        model.setAccurateSearchType(SearchType.valueOf(searchTypeStr!!))
+        model.run {
+            addParameterData(Pair(Constants.API_ALBUM_ID_MAP_KEY, searchId!!))
+            setAccurateSearchType(SearchType.valueOf(searchTypeStr!!))
+        }
     }
 
     override fun initView() {
@@ -56,7 +58,7 @@ class AccurateSearchActivity : BaseActivity() {
                 accurateEntity?.text
             }
         }
-        binding.included.refreshAccurateSearch.run {
+        binding.included.refreshAlbum.run {
             autoRefresh()
             setOnRefreshListener {
                 model.refreshPage()
@@ -65,11 +67,11 @@ class AccurateSearchActivity : BaseActivity() {
                 model.nextPage()
             }
         }
-        binding.included.rvAccurateSearch.apply {
+        binding.included.rvAlbumPicture.apply {
             layoutManager = GridLayoutManager(this@AccurateSearchActivity, 2)
-            adapter = accurateSearchAdapter
+            adapter = albumPictureAdapter
         }
-        accurateSearchAdapter.setItemClick {
+        albumPictureAdapter.setItemClick {
             Intent(this, DetailActivity::class.java).apply {
                 putExtra(Constants.INTENT_KEY_ALBUM_ID, it.id)
             }.let {
@@ -92,21 +94,21 @@ class AccurateSearchActivity : BaseActivity() {
 
     override fun initObserve() {
         super.initObserve()
-        model.albumLiveData.observe(this) {
-            accurateSearchAdapter.addData(it)
+        model.successLiveData.observe(this) {
+            albumPictureAdapter.addData(it)
         }
         model.refreshLiveData.observe(this) {
             if (it) {
-                accurateSearchAdapter.clearData()
+                albumPictureAdapter.clearData()
             }
-            binding.included.refreshAccurateSearch.finishRefresh(it)
+            binding.included.refreshAlbum.finishRefresh(it)
         }
         model.loadMoreLiveData.observe(this) {
-            binding.included.refreshAccurateSearch.finishLoadMore(it)
+            binding.included.refreshAlbum.finishLoadMore(it)
         }
         model.errorLiveData.observe(this) {
-            if (accurateSearchAdapter.itemCount == 0) {
-                accurateSearchAdapter.setErrorView(this, it)
+            if (albumPictureAdapter.itemCount == 0) {
+                albumPictureAdapter.setErrorView(this, it)
             } else {
                 toast(it)
             }

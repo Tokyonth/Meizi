@@ -48,7 +48,7 @@ class DiscoveryViewModel : ViewModel() {
     private fun buildMap(): HashMap<String, String> {
         return HashMap<String, String>().apply {
             put(Constants.API_PAGE_MAP_KEY, "1")
-            put(Constants.API_PAGE_SIZE_MAP_KEY, "30")
+            put(Constants.API_PAGE_SIZE_MAP_KEY, Constants.API_DEFAULT_PAGE_SIZE)
         }
     }
 

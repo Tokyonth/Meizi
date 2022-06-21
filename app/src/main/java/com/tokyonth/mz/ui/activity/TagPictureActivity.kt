@@ -41,13 +41,13 @@ class TagPictureActivity : BaseActivity() {
         }
         this.title = title
         this.searchType = searchType
-        model.setTagPictureType(type)
+        model.setTagPictureType(searchType)
     }
 
     override fun initView() {
         setToolBar(binding.inToolbar.toolbar, title)
         binding.inToolbar.toolbar.navigationIcon?.setTint(Color.parseColor("#444444"))
-        binding.refreshTagPicture.run {
+        binding.included.refreshAlbum.run {
             autoRefresh()
             setOnRefreshListener {
                 model.refreshPage()
@@ -56,7 +56,7 @@ class TagPictureActivity : BaseActivity() {
                 model.nextPage()
             }
         }
-        binding.rvTagPicture.apply {
+        binding.included.rvAlbumPicture.apply {
             layoutManager = GridLayoutManager(this@TagPictureActivity, 4)
             adapter = tagAdapter
         }
@@ -73,17 +73,17 @@ class TagPictureActivity : BaseActivity() {
 
     override fun initObserve() {
         super.initObserve()
-        model.pictureLiveData.observe(this) {
+        model.successLiveData.observe(this) {
             tagAdapter.addData(it)
         }
         model.refreshLiveData.observe(this) {
             if (it) {
                 tagAdapter.clearData()
             }
-            binding.refreshTagPicture.finishRefresh(it)
+            binding.included.refreshAlbum.finishRefresh(it)
         }
         model.loadMoreLiveData.observe(this) {
-            binding.refreshTagPicture.finishLoadMore(it)
+            binding.included.refreshAlbum.finishLoadMore(it)
         }
         model.errorLiveData.observe(this) {
             if (tagAdapter.itemCount == 0) {

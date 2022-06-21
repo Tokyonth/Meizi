@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "图"
+rootProject.name = "LSP"
 include ':app'

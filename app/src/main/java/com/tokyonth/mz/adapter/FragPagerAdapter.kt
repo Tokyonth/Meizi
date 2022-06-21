@@ -1,15 +1,17 @@
 package com.tokyonth.mz.adapter
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 import com.tokyonth.mz.base.BaseFragment
 
 class FragPagerAdapter(
-    fragmentActivity: FragmentActivity,
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle,
     fragArray: ArrayList<BaseFragment>.() -> Unit
-) : FragmentStateAdapter(fragmentActivity) {
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     private val fragmentPages = ArrayList<BaseFragment>()
 

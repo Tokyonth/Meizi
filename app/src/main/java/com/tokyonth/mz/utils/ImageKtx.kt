@@ -9,7 +9,7 @@ import com.github.panpf.sketch.transform.BlurTransformation
 import com.github.panpf.sketch.transform.CircleCropTransformation
 
 fun ImageView.load(url: String, isCircle: Boolean = false, isBlur: Boolean = false) {
-    //return
+    return
     displayImage(url) {
         //placeholder(loadingDrawable())
         if (isCircle) {

@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/iv_hottest_album"
+            android:id="@+id/iv_album_picture"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="#F5F5F5"
@@ -22,7 +22,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_chosen_album_count"
+            android:id="@+id/tv_picture_album_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -32,11 +32,11 @@
             android:text="@string/text_album_count"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_hottest_album"
+            app:layout_constraintBottom_toBottomOf="@id/iv_album_picture"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/tv_hottest_album_name"
+            android:id="@+id/tv_picture_album_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -44,7 +44,7 @@
             android:maxLines="2"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_hottest_album" />
+            app:layout_constraintTop_toBottomOf="@id/iv_album_picture" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

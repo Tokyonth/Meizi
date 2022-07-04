@@ -21,4 +21,7 @@
     <string name="label_category">类别</string>
     <string name="label_motel">模特</string>
     <string name="label_team">机构</string>
+
+    <string name="title_fed">富二代</string>
+    <string name="title_myg">名优馆</string>
 </resources>

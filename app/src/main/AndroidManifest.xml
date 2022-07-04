@@ -41,6 +41,9 @@
             android:name=".ui.activity.SearchActivity"
             android:theme="@style/Theme.Mz.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.PlayerActivity"
+            android:theme="@style/Theme.Mz.NoActionBar" />
     </application>
 
 </manifest>

@@ -79,9 +79,11 @@ interface ApiInterface {
     @POST("/api/lists/resou")
     suspend fun getHotTag(): BaseResponse<List<String>>
 
-    @ReplaceBaseUrl(url = "http://mygzycj.com")
-    @Headers("replace:url")
-    @POST("/sapi.php")
-    suspend fun getMygzy(@Query("ac") type: String): BaseResponse<List<MovieEntity>>
+    @ReplaceBaseUrl("http://f2dcj6.com")
+    @POST("/sapi/json")
+    suspend fun getFedVideo(
+        @Query("ac") type: String,
+        @Query("pg") page: String
+    ): BaseResponse<List<MovieEntity>>
 
 }

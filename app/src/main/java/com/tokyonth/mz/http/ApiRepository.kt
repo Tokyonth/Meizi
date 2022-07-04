@@ -7,8 +7,8 @@ import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
 import com.tokyonth.mz.http.interceptor.AppendParamInterceptor
-import com.tokyonth.mz.http.interceptor.BaseUrlInterceptor
 import com.tokyonth.mz.http.interceptor.LogInterceptor
+import com.tokyonth.mz.http.url.attachBaseUrl
 
 class ApiRepository {
 
@@ -30,20 +30,19 @@ class ApiRepository {
             .client(okHttpClient)
         return setRetrofitBuilder(retrofitBuilder)
             .build()
-            .create(ApiInterface::class.java)
+            .attachBaseUrl(ApiInterface::class.java)
+        //.create(ApiInterface::class.java)
     }
 
     private val okHttpClient: OkHttpClient
         get() {
-            val builder = OkHttpClient.Builder().apply {
-                addInterceptor(BaseUrlInterceptor())
+            return OkHttpClient.Builder().apply {
                 addInterceptor(AppendParamInterceptor())
                 addInterceptor(LogInterceptor())
                 connectTimeout(8, TimeUnit.SECONDS)
                 readTimeout(5, TimeUnit.SECONDS)
                 writeTimeout(5, TimeUnit.SECONDS)
-            }
-            return builder.build()
+            }.build()
         }
 
     private fun setRetrofitBuilder(builder: Retrofit.Builder): Retrofit.Builder {
